@@ -21,7 +21,7 @@ public class Scripts
     }
 
 
-    public void stopwatch(int seconds, JLabel labelToChange ) 
+    public void stopwatch(int seconds, JLabel labelToChange) 
     {
         Timer time = new Timer();
         
@@ -39,7 +39,8 @@ public class Scripts
                 }
                 else
                 {
-                    labelToChange.setText("SE ACABO EL TIMEPO");
+                    labelToChange.setText("Your time has ended!");
+
                     time.cancel();
                 }
             }
