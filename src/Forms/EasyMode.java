@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Forms;
 
-/**
- *
- * @author cristopherr
- */
-public class EasyMode extends javax.swing.JFrame {
+import java.util.*;
 
-    /**
-     * Creates new form EasyMode
-     */
+import javax.swing.JLabel;
+
+import Scripts.Scripts;
+
+public class EasyMode extends javax.swing.JFrame
+{
+
     public EasyMode() {
         initComponents();
+        runProgram();
     }
 
     /**
@@ -26,31 +23,101 @@ public class EasyMode extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn1 = new javax.swing.JToggleButton();
+        btn2 = new javax.swing.JToggleButton();
+        btn3 = new javax.swing.JToggleButton();
+        btn4 = new javax.swing.JToggleButton();
+        lblModeDisplay = new javax.swing.JLabel();
+        lblTimeDisplay = new javax.swing.JLabel();
+        lblPairsLeftDisplay = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset1.png"))); // NOI18N
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
+
+        btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset2.png"))); // NOI18N
+
+        btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset6.png"))); // NOI18N
+
+        btn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset4.png"))); // NOI18N
+
+        lblModeDisplay.setText("EASY MODE");
+
+        lblTimeDisplay.setText("TIME LEFT");
+
+        lblPairsLeftDisplay.setText("Pairs left");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn1)
+                    .addComponent(btn3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn2)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btn4)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(lblModeDisplay)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTimeDisplay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPairsLeftDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblModeDisplay)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTimeDisplay)
+                    .addComponent(lblPairsLeftDisplay))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn1)
+                        .addGap(30, 30, 30)
+                        .addComponent(btn3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn4)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        lblModeDisplay.setText("5");
+    }//GEN-LAST:event_btn1ActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -67,6 +134,7 @@ public class EasyMode extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(EasyMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -77,6 +145,43 @@ public class EasyMode extends javax.swing.JFrame {
         });
     }
 
+
+    public void assignImageToButtons()
+    {
+        int buttonsAmount = 4;
+
+        int[] randomButtonsImageAndPairs = scripts.randomImage(buttonsAmount);
+
+        for (int i = 0; i < buttonsAmount; i++)
+        {
+            //TODO assign each image to the respective button and make them a pair 
+        }
+
+
+
+    }
+
+    public static Scripts scripts = new Scripts();
+
+    public void runProgram()
+    {
+        scripts.stopwatch(20, lblTimeDisplay);
+        
+        
+        assignImageToButtons();
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btn1;
+    private javax.swing.JToggleButton btn2;
+    private javax.swing.JToggleButton btn3;
+    private javax.swing.JToggleButton btn4;
+    private javax.swing.JLabel lblModeDisplay;
+    private javax.swing.JLabel lblPairsLeftDisplay;
+    private javax.swing.JLabel lblTimeDisplay;
     // End of variables declaration//GEN-END:variables
+
+
+
 }
