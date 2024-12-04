@@ -50,7 +50,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblTimeDisplay" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblPairsLeftDisplay" min="-2" pref="57" max="-2" attributes="0"/>
+              <Component id="lblPairsLeftDisplay" min="-2" pref="85" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -87,7 +87,7 @@
     <Component class="javax.swing.JToggleButton" name="btn1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/asset1.png"/>
+          <Image iconType="3" name="/Images/asset0.png"/>
         </Property>
       </Properties>
       <Events>
@@ -97,23 +97,32 @@
     <Component class="javax.swing.JToggleButton" name="btn2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/asset2.png"/>
+          <Image iconType="3" name="/Images/asset0.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btn3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/asset6.png"/>
+          <Image iconType="3" name="/Images/asset0.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btn4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/asset4.png"/>
+          <Image iconType="3" name="/Images/asset0.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblModeDisplay">
       <Properties>

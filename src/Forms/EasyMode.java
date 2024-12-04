@@ -1,16 +1,19 @@
 package Forms;
 
-import java.util.*;
 
-import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 
 import Scripts.Scripts;
 
 public class EasyMode extends javax.swing.JFrame
 {
+    private JToggleButton[] buttonsArray;
+    private Scripts scripts = null;
+    private int pairsLeft = 2;
 
-    public EasyMode() {
+    public EasyMode() 
+    {
         initComponents();
         runProgram();
     }
@@ -31,27 +34,41 @@ public class EasyMode extends javax.swing.JFrame
         lblModeDisplay = new javax.swing.JLabel();
         lblTimeDisplay = new javax.swing.JLabel();
         lblPairsLeftDisplay = new javax.swing.JLabel();
-        
-        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset1.png"))); // NOI18N
+        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
             }
         });
-        
-        btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset2.png"))); // NOI18N
-        
-        btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset6.png"))); // NOI18N
-        
-        btn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset4.png"))); // NOI18N
-        
+
+        btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
+
+        btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
+
+        btn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
+
         lblModeDisplay.setText("EASY MODE");
-        
+
         lblTimeDisplay.setText("TIME LEFT");
-        
+
         lblPairsLeftDisplay.setText("Pairs left");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,55 +78,71 @@ public class EasyMode extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(btn1)
+                    .addComponent(btn1)
                     .addComponent(btn3))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                    .addComponent(btn2)
-                    .addGap(147, 147, 147))
+                        .addComponent(btn2)
+                        .addGap(147, 147, 147))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btn4)
                         .addContainerGap())))
-                        .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(lblModeDisplay)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(lblModeDisplay)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblTimeDisplay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPairsLeftDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPairsLeftDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
-                );
-                layout.setVerticalGroup(
-                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblModeDisplay)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblTimeDisplay)
+                    .addComponent(lblTimeDisplay)
                     .addComponent(lblPairsLeftDisplay))
-                    .addGap(36, 36, 36)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                    .addComponent(btn1)
-                    .addGap(30, 30, 30)
-                    .addComponent(btn3))
+                        .addComponent(btn1)
+                        .addGap(30, 30, 30)
+                        .addComponent(btn3))
                     .addGroup(layout.createSequentialGroup()
-                    .addComponent(btn2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn4)))
-                        .addContainerGap(78, Short.MAX_VALUE))
-                        );
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.checkAndUpdate(btn1, lblPairsLeftDisplay, pairsLeft);
+    }
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.checkAndUpdate(btn2, lblPairsLeftDisplay, pairsLeft);
+    }
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.checkAndUpdate(btn3, lblPairsLeftDisplay, pairsLeft);
+    }
     
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        lblModeDisplay.setText("5");
-    }//GEN-LAST:event_btn1ActionPerformed
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.checkAndUpdate(btn4, lblPairsLeftDisplay, pairsLeft);
+    }
 
     
     public static void main(String args[]) {
@@ -146,34 +179,21 @@ public class EasyMode extends javax.swing.JFrame
             }
         });
     }
-    
-    
-    public void assignImageToButtons()
-    {
-        JToggleButton[] buttonsArray = {btn1,btn2,btn3,btn4};
-
-        int buttonsAmount = 4;
-        
-        int[] randomButtonsImageAndPairs = scripts.randomImage(buttonsAmount);
-
-        for (int i = 0; i < buttonsAmount; i++)
-        {
-
-            String imagePath = String.format("/Images/asset%d.png", randomButtonsImageAndPairs[i] + 1 );
-
-            buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
-            
-            System.out.println(Arrays.toString(buttonsArray));
-        }
-    }
-    
-    public static Scripts scripts = new Scripts();
 
     public void runProgram()
     {
-        scripts.stopwatch(5, lblTimeDisplay);
-
-        assignImageToButtons();
+        buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4};
+        scripts = new Scripts(buttonsArray);
+        // Give the user 5 seconds to memorize
+        scripts.stopwatch(5, lblTimeDisplay, new Runnable() 
+        {
+            @Override
+            
+            public void run()
+            {
+                scripts.assignImageToButtons();
+            }
+        });
     }
     
     

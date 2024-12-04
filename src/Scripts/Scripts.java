@@ -2,15 +2,21 @@ package Scripts;
 
 
 import java.util.*;
-import javax.swing.JLabel;
 
-public class Scripts 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+
+public class Scripts extends JFrame 
 {
     public Random random = new Random();
+    public static final int NUMBEROFIMAGES = 12;
+    private JToggleButton[] buttonsArray;
     
-    public Scripts()
+    public Scripts(JToggleButton[] buttonsArray)
     {
-
+        this.buttonsArray = buttonsArray;
     }
     public void main(String[] args) 
     {
@@ -21,7 +27,7 @@ public class Scripts
     }
 
 
-    public void stopwatch(int seconds, JLabel labelToChange) 
+    public void stopwatch(int seconds, JLabel labelToChange, Runnable onFinish) 
     {
         Timer time = new Timer();
         
@@ -40,8 +46,9 @@ public class Scripts
                 else
                 {
                     labelToChange.setText("Your time has ended!");
-
                     time.cancel();
+
+                    onFinish.run();
                 }
             }
         };
@@ -72,6 +79,59 @@ public class Scripts
         }
 
         return randomIndexes;
+    }
 
+    public void assignImageToButtons()
+    {
+        int[] randomButtonsImageAndPairs = randomImage(buttonsArray.length);
+
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            String imagePath = String.format("/Images/asset%d.png", randomButtonsImageAndPairs[i] + 1 );
+
+            buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); 
+        }
+    }
+
+    public JToggleButton findPartner(JToggleButton originalButton) 
+    {
+
+        ImageIcon targetIcon = (ImageIcon) originalButton.getIcon();
+        String targetDescription = targetIcon.getDescription();
+
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            
+            if (buttonsArray[i] == originalButton) 
+            {
+                continue; 
+            }
+
+            ImageIcon currentIcon = (ImageIcon) buttonsArray[i].getIcon();
+            String currentDescription = currentIcon.getDescription();
+
+            if (currentDescription.equals(targetDescription))
+            {
+                return buttonsArray[i];
+            }
+        }
+        return null; 
+    }
+
+    public void checkAndUpdate(JToggleButton currentButton, JLabel pairsLabel, int pairsLeft)
+    {
+        JToggleButton buttonPair = findPartner(currentButton);
+
+        if (currentButton.isSelected() && buttonPair.isSelected())
+        {
+            pairsLeft -= 1;
+
+
+            pairsLabel.setText("PAIRS LEFT " + pairsLeft);
+
+            currentButton.setEnabled(false);
+            buttonPair.setEnabled(false);
+
+        }
     }
 }
