@@ -12,11 +12,16 @@ public class Scripts extends JFrame
 {
     public Random random = new Random();
     public static final int NUMBEROFIMAGES = 12;
+    private int[] buttonImageIndex;
     private JToggleButton[] buttonsArray;
+    private int pairsLeft;
+    private int currentButtonsActive;
     
-    public Scripts(JToggleButton[] buttonsArray)
+    public Scripts(JToggleButton[] buttonsArray, int pairsLeft, int currentButtonsActive)
     {
         this.buttonsArray = buttonsArray;
+        this.pairsLeft = pairsLeft;
+        this.currentButtonsActive = currentButtonsActive;
     }
     public void main(String[] args) 
     {
@@ -27,7 +32,7 @@ public class Scripts extends JFrame
     }
 
 
-    public void stopwatch(int seconds, JLabel labelToChange, Runnable onFinish) 
+    private void stopwatch(int seconds, JLabel labelToChange, Runnable onFinish) 
     {
         Timer time = new Timer();
         
@@ -53,6 +58,35 @@ public class Scripts extends JFrame
             }
         };
         time.scheduleAtFixedRate(task, 0, 1000);
+    }
+
+    public void gameTime(int memorizeTime, int gameTime, JLabel lblTimeChange, JLabel endGameLabel)
+    {
+        stopwatch(memorizeTime, lblTimeChange, new Runnable() 
+        {
+            @Override
+
+            public void run()
+            {
+                setDefaultImageToButtons();
+                activateButtons();
+
+                stopwatch(gameTime, lblTimeChange, new Runnable() 
+                {
+                    @Override
+
+                    public void run()
+                    {
+                        endGame(endGameLabel);
+                    }
+                    
+                });
+            }
+
+
+            
+        });
+
     }
 
     public int[] randomImage(int buttons) 
@@ -84,41 +118,45 @@ public class Scripts extends JFrame
     public void assignImageToButtons()
     {
         int[] randomButtonsImageAndPairs = randomImage(buttonsArray.length);
+        buttonImageIndex = new int[buttonsArray.length];
 
         for (int i = 0; i < buttonsArray.length; i++)
         {
             String imagePath = String.format("/Images/asset%d.png", randomButtonsImageAndPairs[i] + 1 );
 
             buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); 
+             
+            buttonImageIndex[i] = randomButtonsImageAndPairs[i];
         }
     }
 
     public JToggleButton findPartner(JToggleButton originalButton) 
     {
-
-        ImageIcon targetIcon = (ImageIcon) originalButton.getIcon();
-        String targetDescription = targetIcon.getDescription();
+        int originalImageIndex = -1;
 
         for (int i = 0; i < buttonsArray.length; i++)
         {
-            
             if (buttonsArray[i] == originalButton) 
             {
-                continue; 
-            }
-
-            ImageIcon currentIcon = (ImageIcon) buttonsArray[i].getIcon();
-            String currentDescription = currentIcon.getDescription();
-
-            if (currentDescription.equals(targetDescription))
-            {
-                return buttonsArray[i];
+                originalImageIndex = i;
+                break;
             }
         }
-        return null; 
+
+        int targetImageIndex = buttonImageIndex[originalImageIndex];
+
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            if (i != originalImageIndex && buttonImageIndex[i] == targetImageIndex)
+            {
+                return buttonsArray[i]; 
+            }
+        }
+
+        return null;
     }
 
-    public void checkAndUpdate(JToggleButton currentButton, JLabel pairsLabel, int pairsLeft)
+    public void checkAndUpdate(JToggleButton currentButton, JLabel pairsLabel)
     {
         JToggleButton buttonPair = findPartner(currentButton);
 
@@ -126,12 +164,67 @@ public class Scripts extends JFrame
         {
             pairsLeft -= 1;
 
-
             pairsLabel.setText("PAIRS LEFT " + pairsLeft);
 
             currentButton.setEnabled(false);
             buttonPair.setEnabled(false);
-
+            deselectButtons();
         }
     }
+
+    public void deactivateButtons()
+    {
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            buttonsArray[i].setEnabled(false);    
+        }
+    }
+
+    public void activateButtons()
+    {
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            buttonsArray[i].setEnabled(true);    
+        }
+    }
+
+    public void deselectButtons()
+    {
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            buttonsArray[i].setSelected(false);    
+        }
+    }
+
+    public void checkButtonsCurrentlyActive()
+    {
+        currentButtonsActive += 1;
+        
+        if (currentButtonsActive == 2)
+        {
+            currentButtonsActive = 0; 
+            
+            deselectButtons();
+        }
+    }
+
+    public void setDefaultImageToButtons()
+    {
+        String defaultImagePath = "/Images/asset0.png";
+
+        for (int i = 0; i < buttonsArray.length; i++)
+        {
+            buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(defaultImagePath))); 
+        }
+    }
+
+    public void endGame(JLabel labelToEndGame)
+    {
+        labelToEndGame.setText("YOU LOST HAHAH");
+
+        deactivateButtons();
+
+    }
+
+
 }

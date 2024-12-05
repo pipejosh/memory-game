@@ -11,6 +11,7 @@ public class EasyMode extends javax.swing.JFrame
     private JToggleButton[] buttonsArray;
     private Scripts scripts = null;
     private int pairsLeft = 2;
+    private int buttonsCurrentlyActive = 0;
 
     public EasyMode() 
     {
@@ -126,22 +127,26 @@ public class EasyMode extends javax.swing.JFrame
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn1, lblPairsLeftDisplay, pairsLeft);
+        scripts.checkAndUpdate(btn1, lblPairsLeftDisplay);
+        scripts.checkButtonsCurrentlyActive();
     }
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn2, lblPairsLeftDisplay, pairsLeft);
+        scripts.checkAndUpdate(btn2, lblPairsLeftDisplay);
+        scripts.checkButtonsCurrentlyActive();
     }
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn3, lblPairsLeftDisplay, pairsLeft);
+        scripts.checkAndUpdate(btn3, lblPairsLeftDisplay);
+        scripts.checkButtonsCurrentlyActive();
     }
     
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn4, lblPairsLeftDisplay, pairsLeft);
+        scripts.checkAndUpdate(btn4, lblPairsLeftDisplay);
+        scripts.checkButtonsCurrentlyActive();
     }
 
     
@@ -183,17 +188,17 @@ public class EasyMode extends javax.swing.JFrame
     public void runProgram()
     {
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4};
-        scripts = new Scripts(buttonsArray);
+        scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
+
+        lblPairsLeftDisplay.setText("PAIRS LEFT " + pairsLeft);
+        
+        scripts.deactivateButtons();
+        scripts.assignImageToButtons();
+
+        
         // Give the user 5 seconds to memorize
-        scripts.stopwatch(5, lblTimeDisplay, new Runnable() 
-        {
-            @Override
-            
-            public void run()
-            {
-                scripts.assignImageToButtons();
-            }
-        });
+
+        scripts.gameTime(2, 5, lblTimeDisplay, lblModeDisplay);
     }
     
     

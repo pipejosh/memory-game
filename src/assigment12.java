@@ -9,6 +9,4 @@ public class assigment12
     {
         test.setVisible(true);
     }
-
-    
 }
