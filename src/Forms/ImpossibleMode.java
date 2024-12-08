@@ -50,31 +50,31 @@ public class ImpossibleMode extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton2.setText("jToggleButton2");
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton3.setText("jToggleButton3");
+        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton4.setText("jToggleButton4");
+        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton5.setText("jToggleButton5");
+        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton6.setText("jToggleButton6");
+        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton7.setText("jToggleButton7");
+        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton8.setText("jToggleButton8");
+        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton9.setText("jToggleButton9");
+        jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton10.setText("jToggleButton5");
+        jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton11.setText("jToggleButton6");
+        jToggleButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jToggleButton12.setText("jToggleButton9");
+        jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
 
-        jLabel1.setText("HARD MODE");
+        jLabel1.setText("IMPOSSIBLE MODE");
 
         jLabel2.setText("TIME LEFT");
 
@@ -85,7 +85,7 @@ public class ImpossibleMode extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jToggleButton3)
@@ -132,7 +132,7 @@ public class ImpossibleMode extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToggleButton10)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
