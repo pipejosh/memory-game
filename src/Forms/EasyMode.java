@@ -1,7 +1,6 @@
 package Forms;
 
 
-import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 
 import Scripts.Scripts;
@@ -35,6 +34,7 @@ public class EasyMode extends javax.swing.JFrame
         lblModeDisplay = new javax.swing.JLabel();
         lblTimeDisplay = new javax.swing.JLabel();
         lblPairsLeftDisplay = new javax.swing.JLabel();
+        lblCurrentGameState = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,54 +72,57 @@ public class EasyMode extends javax.swing.JFrame
 
         lblPairsLeftDisplay.setText("Pairs left");
 
+        lblCurrentGameState.setText("CURRENT STATE: MEMORIZING");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn1)
-                    .addComponent(btn3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn2)
-                        .addGap(147, 147, 147))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(btn4)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(lblModeDisplay)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTimeDisplay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPairsLeftDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                .addGap(18, 18, 18))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(lblModeDisplay))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn1)
+                                    .addComponent(btn3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn4)
+                                    .addComponent(btn2)))
+                            .addComponent(lblCurrentGameState, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(12, 12, 12)
                 .addComponent(lblModeDisplay)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimeDisplay)
                     .addComponent(lblPairsLeftDisplay))
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn1)
+                    .addComponent(btn2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn1)
-                        .addGap(30, 30, 30)
-                        .addComponent(btn3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn4)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addComponent(btn3)
+                    .addComponent(btn4))
+                .addGap(18, 18, 18)
+                .addComponent(lblCurrentGameState)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,26 +130,22 @@ public class EasyMode extends javax.swing.JFrame
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn1, lblPairsLeftDisplay);
-        scripts.checkButtonsCurrentlyActive();
+        scripts.buttonsAction(btn1, lblPairsLeftDisplay, lblCurrentGameState);
     }
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn2, lblPairsLeftDisplay);
-        scripts.checkButtonsCurrentlyActive();
+        scripts.buttonsAction(btn2, lblPairsLeftDisplay, lblCurrentGameState);
     }
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn3, lblPairsLeftDisplay);
-        scripts.checkButtonsCurrentlyActive();
+        scripts.buttonsAction(btn3, lblPairsLeftDisplay, lblCurrentGameState);
     }
     
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        scripts.checkAndUpdate(btn4, lblPairsLeftDisplay);
-        scripts.checkButtonsCurrentlyActive();
+        scripts.buttonsAction(btn4, lblPairsLeftDisplay, lblCurrentGameState);
     }
 
     
@@ -195,10 +194,9 @@ public class EasyMode extends javax.swing.JFrame
         scripts.deactivateButtons();
         scripts.assignImageToButtons();
 
-        
         // Give the user 5 seconds to memorize
 
-        scripts.gameTime(2, 5, lblTimeDisplay, lblModeDisplay);
+        scripts.gameTime(2, 5, lblTimeDisplay, lblCurrentGameState);
     }
     
     
@@ -207,6 +205,7 @@ public class EasyMode extends javax.swing.JFrame
     private javax.swing.JToggleButton btn2;
     private javax.swing.JToggleButton btn3;
     private javax.swing.JToggleButton btn4;
+    private javax.swing.JLabel lblCurrentGameState;
     private javax.swing.JLabel lblModeDisplay;
     private javax.swing.JLabel lblPairsLeftDisplay;
     private javax.swing.JLabel lblTimeDisplay;

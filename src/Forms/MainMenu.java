@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Forms;
+import java.awt.Frame;
+import javax.swing.JFrame;
 
 /**
  *
  * @author cristopherr
  */
+
 public class MainMenu extends javax.swing.JFrame {
 
     /**
@@ -15,6 +14,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        closeAllFramesExceptCurrent();
     }
 
     /**
@@ -31,6 +31,7 @@ public class MainMenu extends javax.swing.JFrame {
         btnEasyMode = new javax.swing.JButton();
         btnNormalMode = new javax.swing.JButton();
         btnHardMode = new javax.swing.JButton();
+        btnImpossibleMode = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,72 +60,95 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        btnImpossibleMode.setText("IMPOSSIBLE");
+        btnImpossibleMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImpossibleModeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE)
-                .addComponent(btnEasyMode, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnHardMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
             .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(lblMain)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDificulty)
-                .addGap(149, 149, 149))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(lblMain))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEasyMode, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnHardMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnImpossibleMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(lblDificulty)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lblMain)
-                .addGap(72, 72, 72)
+                .addGap(33, 33, 33)
                 .addComponent(lblDificulty)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEasyMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnImpossibleMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHardMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnEasyModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
         EasyMode easyMode = new EasyMode();
-
+        
         easyMode.setVisible(true);
-
+        
         this.dispose();
     }
-
+    
     private void btnNormalModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
         NormalMode normalMode = new NormalMode();
-
+        
         normalMode.setVisible(true);
-
+        
         this.dispose();
     }
-
+    
     private void btnHardModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
         HardMode hardMode = new HardMode();
-
+        
         hardMode.setVisible(true);
-
+        
         this.dispose();
     }
+    private void btnImpossibleModeActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        ImpossibleMode impossibleMode = new ImpossibleMode();
 
+        impossibleMode.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_btnImpossibleModeActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -132,7 +156,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -159,10 +183,25 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
+     
+
+    private void closeAllFramesExceptCurrent() 
+    {
+        Frame[] frames = Frame.getFrames(); // Obtiene todos los marcos activos
+
+        for (Frame frame : frames) 
+        {
+            if (frame instanceof JFrame && frame != this) 
+            {
+                frame.dispose(); // Cierra el marco si no es el actual
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEasyMode;
     private javax.swing.JButton btnHardMode;
+    private javax.swing.JButton btnImpossibleMode;
     private javax.swing.JButton btnNormalMode;
     private javax.swing.JLabel lblDificulty;
     private javax.swing.JLabel lblMain;

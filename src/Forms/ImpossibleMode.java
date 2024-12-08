@@ -5,12 +5,12 @@ import java.util.*;
  *
  * @author cristopherr
  */
-public class HardMode extends javax.swing.JFrame {
+public class ImpossibleMode extends javax.swing.JFrame {
 
     /**
      * Creates new form HardMode
      */
-    public HardMode() {
+    public ImpossibleMode() {
         initComponents();
     }
 
@@ -27,7 +27,7 @@ public class HardMode extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        
+
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         jToggleButton1 = new javax.swing.JToggleButton();
@@ -47,11 +47,11 @@ public class HardMode extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jEditorPane1);
-        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
+
         jToggleButton1.setText("jToggleButton1");
-        
+
         jToggleButton2.setText("jToggleButton2");
 
         jToggleButton3.setText("jToggleButton3");
@@ -78,9 +78,7 @@ public class HardMode extends javax.swing.JFrame {
 
         jLabel2.setText("TIME LEFT");
 
-        jLabel3.setText("smthing");
-
-
+        jLabel3.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,20 +174,21 @@ public class HardMode extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HardMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ImpossibleMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HardMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ImpossibleMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HardMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ImpossibleMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HardMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ImpossibleMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HardMode().setVisible(true);
+                new ImpossibleMode().setVisible(true);
             }
         });
     }

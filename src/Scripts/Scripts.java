@@ -3,10 +3,10 @@ package Scripts;
 
 import java.util.*;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
+import Forms.WinOrLose;
 
 public class Scripts extends JFrame 
 {
@@ -16,6 +16,8 @@ public class Scripts extends JFrame
     private JToggleButton[] buttonsArray;
     private int pairsLeft;
     private int currentButtonsActive;
+    private Timer gameTimer;
+    private WinOrLose result = new WinOrLose();
     
     public Scripts(JToggleButton[] buttonsArray, int pairsLeft, int currentButtonsActive)
     {
@@ -26,16 +28,41 @@ public class Scripts extends JFrame
     public void main(String[] args) 
     {
         int[] a = randomImage(4);
-
+        
         System.out.println(Arrays.toString(a));
-
     }
 
-
-    private void stopwatch(int seconds, JLabel labelToChange, Runnable onFinish) 
+    public void gameTime(int memorizeTime, int gameTime, JLabel lblTimeChange, JLabel lblGameState)
     {
-        Timer time = new Timer();
-        
+        startTimer(memorizeTime, lblTimeChange, new Runnable() 
+        {
+            @Override
+            public void run()
+            {
+                setDefaultImageToButtons();
+                activateButtons();
+                lblGameState.setText("CURRENT STATE: IN GAME");
+
+                // Segundo temporizador: Tiempo para jugar
+                startTimer(gameTime, lblTimeChange, new Runnable() 
+                {
+                    @Override
+                    public void run()
+                    {
+                        lose(lblGameState);
+                    }
+                });
+            }
+        });
+    }
+
+    private void startTimer(int seconds, JLabel labelToChange, Runnable onFinish)
+    {
+        if (gameTimer != null) {
+            gameTimer.cancel(); // Detener cualquier timer en curso
+        }
+
+        gameTimer = new Timer();
         TimerTask task = new TimerTask() 
         {
             int counter = seconds;
@@ -46,48 +73,29 @@ public class Scripts extends JFrame
                 if (counter > 0)
                 {
                     labelToChange.setText("COUNTER " + counter);
-                    counter --;
+                    counter--;
                 }
                 else
                 {
                     labelToChange.setText("Your time has ended!");
-                    time.cancel();
-
+                    gameTimer.cancel(); // Detener el timer actual
                     onFinish.run();
                 }
             }
         };
-        time.scheduleAtFixedRate(task, 0, 1000);
+
+        gameTimer.scheduleAtFixedRate(task, 0, 1000);
     }
 
-    public void gameTime(int memorizeTime, int gameTime, JLabel lblTimeChange, JLabel endGameLabel)
+    public void stopGameTimer()
     {
-        stopwatch(memorizeTime, lblTimeChange, new Runnable() 
-        {
-            @Override
-
-            public void run()
-            {
-                setDefaultImageToButtons();
-                activateButtons();
-
-                stopwatch(gameTime, lblTimeChange, new Runnable() 
-                {
-                    @Override
-
-                    public void run()
-                    {
-                        endGame(endGameLabel);
-                    }
-                    
-                });
-            }
-
-
-            
-        });
-
+        if (gameTimer != null) {
+            gameTimer.cancel();
+            gameTimer = null;
+        }
     }
+
+    
 
     public int[] randomImage(int buttons) 
     {
@@ -156,19 +164,28 @@ public class Scripts extends JFrame
         return null;
     }
 
-    public void checkAndUpdate(JToggleButton currentButton, JLabel pairsLabel)
+    public void checkAndUpdate(JToggleButton currentButton, JLabel pairsLabel, JLabel lblGameState)
     {
         JToggleButton buttonPair = findPartner(currentButton);
 
+        System.out.println(currentButtonsActive);
+
         if (currentButton.isSelected() && buttonPair.isSelected())
         {
-            pairsLeft -= 1;
+            pairsLeft --;
 
             pairsLabel.setText("PAIRS LEFT " + pairsLeft);
 
+            currentButton.setSelected(false);
+            buttonPair.setSelected(false);
+
             currentButton.setEnabled(false);
             buttonPair.setEnabled(false);
-            deselectButtons();
+        }
+
+        else if (currentButtonsActive == 2 && pairsLeft > 0)
+        {
+            lose(lblGameState);
         }
     }
 
@@ -188,23 +205,15 @@ public class Scripts extends JFrame
         }
     }
 
-    public void deselectButtons()
+    public void checkButtonsCurrentlyActive()
     {
         for (int i = 0; i < buttonsArray.length; i++)
         {
-            buttonsArray[i].setSelected(false);    
-        }
-    }
+            if (buttonsArray[i].isSelected())
+            {
+                currentButtonsActive ++;
+            }
 
-    public void checkButtonsCurrentlyActive()
-    {
-        currentButtonsActive += 1;
-        
-        if (currentButtonsActive == 2)
-        {
-            currentButtonsActive = 0; 
-            
-            deselectButtons();
         }
     }
 
@@ -218,13 +227,54 @@ public class Scripts extends JFrame
         }
     }
 
-    public void endGame(JLabel labelToEndGame)
+    public void lose(JLabel labelToEndGame)
     {
-        labelToEndGame.setText("YOU LOST HAHAH");
+
+        result.setStateLbl("YOU LOSE");
+
+        result.setVisible(true);
+
+        labelToEndGame.setText("YOU LOSE");
 
         deactivateButtons();
 
+        stopGameTimer();
+
     }
 
+    public void win(JLabel labelToWinGame)
+    {
+        result.setStateLbl("YOU WIN");        
 
+        result.setVisible(true);
+        
+        labelToWinGame.setText("YOU WON");
+
+        deactivateButtons();
+
+        stopGameTimer();
+    }
+     
+    public boolean checkIfWin()
+    {
+        if (pairsLeft == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void buttonsAction(JToggleButton button, JLabel lblPairsleftDisplay, JLabel lblGameState)
+    {
+        currentButtonsActive = 0;
+        checkButtonsCurrentlyActive();
+        checkAndUpdate(button, lblPairsleftDisplay, lblGameState);
+        boolean hasWon = checkIfWin();
+
+        if (hasWon)
+        {
+            win(lblGameState);
+        }
+    }
 }
