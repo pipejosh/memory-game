@@ -58,8 +58,9 @@ public class Scripts extends JFrame
 
     private void startTimer(int seconds, JLabel labelToChange, Runnable onFinish)
     {
-        if (gameTimer != null) {
-            gameTimer.cancel(); // Detener cualquier timer en curso
+        if (gameTimer != null) 
+        {
+            gameTimer.cancel(); 
         }
 
         gameTimer = new Timer();
@@ -78,7 +79,7 @@ public class Scripts extends JFrame
                 else
                 {
                     labelToChange.setText("Your time has ended!");
-                    gameTimer.cancel(); // Detener el timer actual
+                    gameTimer.cancel(); 
                     onFinish.run();
                 }
             }
@@ -89,17 +90,15 @@ public class Scripts extends JFrame
 
     public void stopGameTimer()
     {
-        if (gameTimer != null) {
+        if (gameTimer != null) 
+        {
             gameTimer.cancel();
             gameTimer = null;
         }
     }
 
-    
-
     public int[] randomImage(int buttons) 
     {
-        // escojer una imagen aleatoria
 
         int[] randomIndexes = new int[buttons];
 
@@ -108,6 +107,22 @@ public class Scripts extends JFrame
         for (int i = 0; i < buttons; i+= 2)
         {
             int randomElemet = random.nextInt(12);
+
+            if (i == 0)
+            {
+                imagePairs.add(randomElemet);
+                imagePairs.add(randomElemet);
+
+                continue;
+            }
+
+            else if (imagePairs.contains(randomElemet))
+            {
+                while (imagePairs.contains(randomElemet))
+                {
+                    randomElemet = random.nextInt(12);
+                }
+            }
 
             imagePairs.add(randomElemet);
             imagePairs.add(randomElemet);
