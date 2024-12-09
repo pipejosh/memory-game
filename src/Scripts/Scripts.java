@@ -18,6 +18,8 @@ public class Scripts extends JFrame
     private int currentButtonsActive;
     private Timer gameTimer;
     private WinOrLose result = new WinOrLose();
+
+    public int[] randomPairsImage;
     
     public Scripts(JToggleButton[] buttonsArray, int pairsLeft, int currentButtonsActive)
     {
@@ -27,9 +29,7 @@ public class Scripts extends JFrame
     }
     public void main(String[] args) 
     {
-        int[] a = randomImage(4);
-        
-        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(randomPairsImage));
     }
 
     public void gameTime(int memorizeTime, int gameTime, JLabel lblTimeChange, JLabel lblGameState)
@@ -97,59 +97,46 @@ public class Scripts extends JFrame
         }
     }
 
-    public int[] randomImage(int buttons) 
+    public void randomImage(int buttons) 
     {
-
-        int[] randomIndexes = new int[buttons];
+        randomPairsImage = new int[buttons];
 
         ArrayList<Integer> imagePairs = new ArrayList<Integer>();
 
         for (int i = 0; i < buttons; i+= 2)
         {
-            int randomElemet = random.nextInt(12);
+            int randomElement;
 
-            if (i == 0)
+            do
             {
-                imagePairs.add(randomElemet);
-                imagePairs.add(randomElemet);
-
-                continue;
+                randomElement = random.nextInt(12); 
             }
+            
+            while (imagePairs.contains(randomElement));
 
-            else if (imagePairs.contains(randomElemet))
-            {
-                while (imagePairs.contains(randomElemet))
-                {
-                    randomElemet = random.nextInt(12);
-                }
-            }
-
-            imagePairs.add(randomElemet);
-            imagePairs.add(randomElemet);
+            imagePairs.add(randomElement);
+            imagePairs.add(randomElement);
         }
 
         Collections.shuffle(imagePairs);
 
-        for (int i = 0; i < randomIndexes.length; i++)
+        for (int i = 0; i < randomPairsImage.length; i++)
         {
-            randomIndexes[i] = imagePairs.get(i); 
+            randomPairsImage[i] = imagePairs.get(i); 
         }
-
-        return randomIndexes;
     }
 
     public void assignImageToButtons()
     {
-        int[] randomButtonsImageAndPairs = randomImage(buttonsArray.length);
         buttonImageIndex = new int[buttonsArray.length];
 
         for (int i = 0; i < buttonsArray.length; i++)
         {
-            String imagePath = String.format("/Images/asset%d.png", randomButtonsImageAndPairs[i] + 1 );
+            String imagePath = String.format("/Images/asset%d.png", randomPairsImage[i] + 1 );
 
             buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); 
              
-            buttonImageIndex[i] = randomButtonsImageAndPairs[i];
+            buttonImageIndex[i] = randomPairsImage[i];
         }
     }
 
@@ -244,6 +231,7 @@ public class Scripts extends JFrame
 
     public void lose(JLabel labelToEndGame)
     {
+        assignImageToButtons();
 
         result.setStateLbl("YOU LOSE");
 
@@ -259,6 +247,8 @@ public class Scripts extends JFrame
 
     public void win(JLabel labelToWinGame)
     {
+        assignImageToButtons();
+
         result.setStateLbl("YOU WIN");        
 
         result.setVisible(true);
@@ -291,5 +281,15 @@ public class Scripts extends JFrame
         {
             win(lblGameState);
         }
+    }
+
+    public void gameBegin(JLabel lblPaisLeft)
+    {
+        lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);
+        
+        deactivateButtons();
+        randomImage(buttonsArray.length);
+        assignImageToButtons();
+
     }
 }

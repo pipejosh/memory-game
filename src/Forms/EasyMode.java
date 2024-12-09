@@ -189,10 +189,7 @@ public class EasyMode extends javax.swing.JFrame
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4};
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
 
-        lblPairsLeftDisplay.setText("PAIRS LEFT " + pairsLeft);
-        
-        scripts.deactivateButtons();
-        scripts.assignImageToButtons();
+        scripts.gameBegin(lblCurrentGameState);
 
         // Give the user 5 seconds to memorize
 

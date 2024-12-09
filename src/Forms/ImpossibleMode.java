@@ -329,14 +329,11 @@ public class ImpossibleMode extends javax.swing.JFrame {
 
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
 
-        lblPairsLeft.setText("PAIRS LEFT" + pairsLeft);
+        scripts.gameBegin(lblPairsLeft);
 
-        scripts.deactivateButtons();
-        scripts.assignImageToButtons();
+        // Gives 10 seconds to memorize and 15 to solve it
 
-        // Give the user 5 seconds to memorize
-
-        scripts.gameTime(10, 100000, lblTimeLeft, lblCurrentState);
+        scripts.gameTime(10, 15, lblTimeLeft, lblCurrentState);
     }
 
 

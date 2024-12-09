@@ -225,18 +225,14 @@ public class NormalMode extends javax.swing.JFrame {
 
     private void runProgram()
     {
-
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4, btn5, btn6,};
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
 
-        lblPairsLeft.setText("PAIRS LEFT " + pairsLeft);
-        
-        scripts.deactivateButtons();
-        scripts.assignImageToButtons();
+        scripts.gameBegin(lblPairsLeft);
 
         // Give the user 5 seconds to memorize
 
-        scripts.gameTime(3, 100000, lblTimeLeft, lblCurrentState);
+        scripts.gameTime(3, 7, lblTimeLeft, lblCurrentState);
 
 
     }

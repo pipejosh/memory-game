@@ -1,6 +1,7 @@
 package Forms;
-import java.util.*;
 
+import javax.swing.JToggleButton;
+import Scripts.Scripts;
 /**
  *
  * @author cristopherr
@@ -10,15 +11,17 @@ public class HardMode extends javax.swing.JFrame {
     /**
      * Creates new form HardMode
      */
+
     public HardMode() {
         initComponents();
+        runProgram();
     }
 
-    public void setTimerToLabel()
-    {
-         
-    }
-    
+    private JToggleButton[] buttonsArray;
+    private Scripts scripts = null;
+    private int pairsLeft = 5;
+    private int buttonsCurrentlyActive = 0;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,144 +31,150 @@ public class HardMode extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jToggleButton8 = new javax.swing.JToggleButton();
-        jToggleButton9 = new javax.swing.JToggleButton();
-        jToggleButton12 = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-
-        jScrollPane1.setViewportView(jEditorPane1);
+        btn1 = new javax.swing.JToggleButton();
+        btn2 = new javax.swing.JToggleButton();
+        btn3 = new javax.swing.JToggleButton();
+        btn4 = new javax.swing.JToggleButton();
+        btn5 = new javax.swing.JToggleButton();
+        btn6 = new javax.swing.JToggleButton();
+        btn7 = new javax.swing.JToggleButton();
+        btn8 = new javax.swing.JToggleButton();
+        btn9 = new javax.swing.JToggleButton();
+        btn10 = new javax.swing.JToggleButton();
+        lblModeDisplay = new javax.swing.JLabel();
+        lblTimeLeft = new javax.swing.JLabel();
+        lblPairsLeft = new javax.swing.JLabel();
+        lblCurrentState = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btn1ActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btn2ActionPerformed(evt);
             }
         });
 
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                btn3ActionPerformed(evt);
             }
         });
 
-        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                btn4ActionPerformed(evt);
             }
         });
 
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                btn5ActionPerformed(evt);
             }
         });
 
-        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton6ActionPerformed(evt);
+                btn6ActionPerformed(evt);
             }
         });
 
-        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton7ActionPerformed(evt);
+                btn7ActionPerformed(evt);
             }
         });
 
-        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+        btn8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton8ActionPerformed(evt);
+                btn8ActionPerformed(evt);
             }
         });
 
-        jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+        btn9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton9ActionPerformed(evt);
+                btn9ActionPerformed(evt);
             }
         });
 
-        jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
-        jToggleButton12.addActionListener(new java.awt.event.ActionListener() {
+        btn10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton12ActionPerformed(evt);
+                btn10ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("HARD MODE");
+        lblModeDisplay.setText("HARD MODE");
 
-        jLabel2.setText("TIME LEFT");
+        lblTimeLeft.setText("TIME LEFT");
+
+        lblPairsLeft.setText("PAIRS LEFT");
+
+        lblCurrentState.setText("CURRENT STATE: MEMORIZING");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(283, 283, 283))
-            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton3)
-                            .addComponent(jToggleButton1))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jToggleButton4))
-                                    .addComponent(jToggleButton2))
+                                    .addComponent(btn3)
+                                    .addComponent(btn1))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton6)
-                                    .addComponent(jToggleButton5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton8)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(btn4))
+                                            .addComponent(btn2))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn6)
+                                            .addComponent(btn5))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn8)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(btn7))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jToggleButton7))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCurrentState)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btn9)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn10))))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jToggleButton9)
-                                .addGap(18, 18, 18)
-                                .addComponent(jToggleButton12))))
+                                .addGap(127, 127, 127)
+                                .addComponent(lblModeDisplay)))
+                        .addContainerGap(47, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(9, 9, 9)
+                        .addComponent(lblTimeLeft)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblPairsLeft)
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,80 +182,92 @@ public class HardMode extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
+                        .addComponent(lblModeDisplay))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTimeLeft)
+                            .addComponent(lblPairsLeft))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jToggleButton1)
+                            .addComponent(btn1)
                             .addGap(35, 35, 35)
-                            .addComponent(jToggleButton3))
+                            .addComponent(btn3))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jToggleButton2)
+                            .addComponent(btn2)
                             .addGap(35, 35, 35)
-                            .addComponent(jToggleButton4)))
+                            .addComponent(btn4)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton5)
+                        .addComponent(btn5)
                         .addGap(35, 35, 35)
-                        .addComponent(jToggleButton6))
+                        .addComponent(btn6))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton7)
+                        .addComponent(btn7)
                         .addGap(35, 35, 35)
-                        .addComponent(jToggleButton8)))
+                        .addComponent(btn8)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToggleButton12, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(btn9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(lblCurrentState)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn1, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn2, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn3, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton7ActionPerformed
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn4, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn5, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn6, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton6ActionPerformed
+    private void btn7ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn7, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton8ActionPerformed
+    private void btn8ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn8, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton9ActionPerformed
+    private void btn9ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn9, lblPairsLeft, lblCurrentState);
+    }
 
-    private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton12ActionPerformed
+    private void btn10ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn10, lblPairsLeft, lblCurrentState);
+    }
 
     /**
      * @param args the command line arguments
@@ -283,21 +304,33 @@ public class HardMode extends javax.swing.JFrame {
         });
     }
 
+    public void runProgram()
+    {
+        buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10,};
+
+        scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
+
+        scripts.gameBegin(lblPairsLeft);
+
+        // Gives 7 seconds to memorize and 12 to solve it
+
+        scripts.gameTime(7, 12, lblTimeLeft, lblCurrentState);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton12;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
-    private javax.swing.JToggleButton jToggleButton8;
-    private javax.swing.JToggleButton jToggleButton9;
+    private javax.swing.JToggleButton btn1;
+    private javax.swing.JToggleButton btn10;
+    private javax.swing.JToggleButton btn2;
+    private javax.swing.JToggleButton btn3;
+    private javax.swing.JToggleButton btn4;
+    private javax.swing.JToggleButton btn5;
+    private javax.swing.JToggleButton btn6;
+    private javax.swing.JToggleButton btn7;
+    private javax.swing.JToggleButton btn8;
+    private javax.swing.JToggleButton btn9;
+    private javax.swing.JLabel lblCurrentState;
+    private javax.swing.JLabel lblModeDisplay;
+    private javax.swing.JLabel lblPairsLeft;
+    private javax.swing.JLabel lblTimeLeft;
     // End of variables declaration//GEN-END:variables
 }
