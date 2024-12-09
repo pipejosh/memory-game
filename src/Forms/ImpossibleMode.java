@@ -51,28 +51,88 @@ public class ImpossibleMode extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
 
         btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
 
         btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
 
         btn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
 
         btn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ActionPerformed(evt);
+            }
+        });
 
         btn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn6ActionPerformed(evt);
+            }
+        });
 
         btn7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn7ActionPerformed(evt);
+            }
+        });
 
         btn8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn8ActionPerformed(evt);
+            }
+        });
 
         btn9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn9ActionPerformed(evt);
+            }
+        });
 
         btn10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn10ActionPerformed(evt);
+            }
+        });
 
         btn11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn11ActionPerformed(evt);
+            }
+        });
 
         btn12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn12ActionPerformed(evt);
+            }
+        });
 
         lblModeDisplay.setText("IMPOSSIBLE MODE");
 
@@ -87,47 +147,49 @@ public class ImpossibleMode extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(lblTimeLeft)
-                .addGap(182, 182, 182)
-                .addComponent(lblPairsLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTimeLeft)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblModeDisplay)
+                                .addGap(243, 243, 243))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPairsLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn6)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn11))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn3)
+                                .addComponent(btn7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn4)
+                                .addComponent(btn8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn6)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn11))
+                                .addComponent(btn9))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblCurrentState)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btn7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btn8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btn9))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btn1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btn2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btn5))))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn12)
-                                    .addComponent(btn10))))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblModeDisplay)
-                        .addGap(146, 146, 146))))
+                                .addComponent(btn1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn5)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn12)
+                            .addComponent(btn10))))
+                .addGap(0, 61, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCurrentState)
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,6 +226,66 @@ public class ImpossibleMode extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn1, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn2, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn3, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn4, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn5, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn6, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn7ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn7, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn8ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn8, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn9ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn9, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn10ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn10, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn11ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn11, lblPairsLeft, lblCurrentState);
+    }
+
+    private void btn12ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.buttonsAction(btn12, lblPairsLeft, lblCurrentState);
+    }
 
     /**
      * @param args the command line arguments
