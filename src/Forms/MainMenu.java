@@ -2,12 +2,16 @@ package Forms;
 import java.awt.Frame;
 import javax.swing.JFrame;
 
+import Scripts.PlayMusic;
+
 /**
  *
  * @author cristopherr
  */
 
 public class MainMenu extends javax.swing.JFrame {
+
+    private PlayMusic musicPlayer = new PlayMusic();
 
     /**
      * Creates new form MainMenu
@@ -111,43 +115,51 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     
     private void btnEasyModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        musicPlayer.stopSong(); 
+        this.dispose();
         EasyMode easyMode = new EasyMode();
         
         easyMode.setVisible(true);
         
-        this.dispose();
+        // actionOnButton();
     }
     
     private void btnNormalModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        musicPlayer.stopSong(); 
+        this.dispose();
         NormalMode normalMode = new NormalMode();
         
         normalMode.setVisible(true);
         
-        this.dispose();
+        // actionOnButton();
     }
     
     private void btnHardModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        musicPlayer.stopSong(); 
+        this.dispose();
         HardMode hardMode = new HardMode();
         
         hardMode.setVisible(true);
         
-        this.dispose();
+        // actionOnButton();
     }
     private void btnImpossibleModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        musicPlayer.stopSong(); 
+        this.dispose();
         ImpossibleMode impossibleMode = new ImpossibleMode();
 
         impossibleMode.setVisible(true);
 
-        this.dispose();
-    }//GEN-LAST:event_btnImpossibleModeActionPerformed
+        // actionOnButton();
+    }
     
     /**
      * @param args the command line arguments
@@ -187,16 +199,26 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void closeAllFramesExceptCurrent() 
     {
+
+        // musicPlayer.startSong("mainTheme");
+
         Frame[] frames = Frame.getFrames(); // Obtiene todos los marcos activos
 
         for (Frame frame : frames) 
         {
             if (frame instanceof JFrame && frame != this) 
             {
-                frame.dispose(); // Cierra el marco si no es el actual
+                frame.dispose();
             }
         }
     }
+
+    private void actionOnButton()
+    {
+        musicPlayer.stopSong();
+        this.dispose();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEasyMode;

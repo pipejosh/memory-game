@@ -10,16 +10,17 @@ import Forms.WinOrLose;
 
 public class Scripts extends JFrame 
 {
-    public Random random = new Random();
-    public static final int NUMBEROFIMAGES = 12;
     private int[] buttonImageIndex;
     private JToggleButton[] buttonsArray;
     private int pairsLeft;
     private int currentButtonsActive;
     private Timer gameTimer;
     private WinOrLose result = new WinOrLose();
+    private PlayMusic musicPlayer = new PlayMusic();
 
     public int[] randomPairsImage;
+    public Random random = new Random();
+    public static int NUMBEROFIMAGES = 12;
     
     public Scripts(JToggleButton[] buttonsArray, int pairsLeft, int currentButtonsActive)
     {
@@ -58,7 +59,7 @@ public class Scripts extends JFrame
 
     private void startTimer(int seconds, JLabel labelToChange, Runnable onFinish)
     {
-        if (gameTimer != null) 
+       if (gameTimer != null) 
         {
             gameTimer.cancel(); 
         }
@@ -183,6 +184,7 @@ public class Scripts extends JFrame
 
             currentButton.setEnabled(false);
             buttonPair.setEnabled(false);
+
         }
 
         else if (currentButtonsActive == 2 && pairsLeft > 0)
@@ -231,6 +233,7 @@ public class Scripts extends JFrame
 
     public void lose(JLabel labelToEndGame)
     {
+
         assignImageToButtons();
 
         result.setStateLbl("YOU LOSE");
@@ -247,6 +250,7 @@ public class Scripts extends JFrame
 
     public void win(JLabel labelToWinGame)
     {
+
         assignImageToButtons();
 
         result.setStateLbl("YOU WIN");        
@@ -276,6 +280,7 @@ public class Scripts extends JFrame
         checkButtonsCurrentlyActive();
         checkAndUpdate(button, lblPairsleftDisplay, lblGameState);
         boolean hasWon = checkIfWin();
+
 
         if (hasWon)
         {

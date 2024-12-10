@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Forms;
 
+import Scripts.PlayMusic;
 /**
  *
  * @author Crist
@@ -13,8 +10,14 @@ public class WinOrLose extends javax.swing.JFrame {
     /**
      * Creates new form win
      */
-    public WinOrLose() {
+
+    private PlayMusic musicPlayer = new PlayMusic();
+
+    
+    public WinOrLose() 
+    {
         initComponents();
+        setMusic();
     }
 
     /**
@@ -140,6 +143,14 @@ public class WinOrLose extends javax.swing.JFrame {
     {
         lblWin.setText(message);
     }
+
+    private void setMusic() 
+    {
+        musicPlayer.stopSong();
+        musicPlayer.startSong("mainTheme");
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
