@@ -5,7 +5,6 @@ package Forms;
 
 import java.awt.Frame;
 import javax.swing.JFrame;
-
 import Scripts.PlayMusic;
 
 /**
@@ -13,14 +12,18 @@ import Scripts.PlayMusic;
  * @author cristopherr
  */
 
-public class MainMenu extends javax.swing.JFrame {
+public class MainMenu extends javax.swing.JFrame 
+{
 
-    private PlayMusic musicPlayer = new PlayMusic();
-
+    private PlayMusic musicPlayer;
+    
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu() 
+    {
+        musicPlayer = new PlayMusic();
+        musicPlayer.startSong("mainTheme");
         initComponents();
         closeAllFramesExceptCurrent();
     }
@@ -32,7 +35,8 @@ public class MainMenu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents() 
+    {
 
         lblMain = new javax.swing.JLabel();
         lblDificulty = new javax.swing.JLabel();
@@ -124,45 +128,38 @@ public class MainMenu extends javax.swing.JFrame {
     
     private void btnEasyModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        musicPlayer.stopSong(); 
-        this.dispose();
         EasyMode easyMode = new EasyMode();
         
         easyMode.setVisible(true);
-        
-        // actionOnButton();
+
+        musicPlayer.startSong("gameTheme");
+
     }
     
     private void btnNormalModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        musicPlayer.stopSong(); 
-        this.dispose();
         NormalMode normalMode = new NormalMode();
         
         normalMode.setVisible(true);
-        
-        // actionOnButton();
+
+        musicPlayer.stopSong();
     }
     
     private void btnHardModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        musicPlayer.stopSong(); 
-        this.dispose();
         HardMode hardMode = new HardMode();
         
         hardMode.setVisible(true);
-        
-        // actionOnButton();
+
+        musicPlayer.stopSong();
     }
     private void btnImpossibleModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        musicPlayer.stopSong(); 
-        this.dispose();
         ImpossibleMode impossibleMode = new ImpossibleMode();
 
         impossibleMode.setVisible(true);
 
-        // actionOnButton();
+        musicPlayer.stopSong();
     }
     
     /**
@@ -216,13 +213,6 @@ public class MainMenu extends javax.swing.JFrame {
             }
         }
     }
-
-    private void actionOnButton()
-    {
-        musicPlayer.stopSong();
-        this.dispose();
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEasyMode;

@@ -19,7 +19,7 @@ public class Scripts extends JFrame
     private int currentButtonsActive;
     private Timer gameTimer;
     private WinOrLose result = new WinOrLose();
-    private PlayMusic musicPlayer = new PlayMusic();
+    // private PlayMusic musicPlayer = new PlayMusic();
 
     public int[] randomPairsImage;
     public Random random = new Random();

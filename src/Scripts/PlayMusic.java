@@ -3,7 +3,6 @@
  
 package Scripts;
 
-import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -39,11 +38,15 @@ public class PlayMusic
 
         if (soundPath == null) 
         {
-            System.out.println("Clave de sonido no válida: " + soundKey);
+            
             return;
         }
 
-        URL soundUrl = getClass().getResource(soundPath);
+URL soundUrl = new URL();
+
+ soundUrl = getClass().getResource(soundPath);
+
+        System.out.println(soundUrl.toString());
 
         try 
         {
