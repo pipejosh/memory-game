@@ -1,4 +1,8 @@
+
+// TODO FIX THE MUSIC BUGS
+
 package Forms;
+
 import java.awt.Frame;
 import javax.swing.JFrame;
 
