@@ -1,5 +1,4 @@
  
-// TODO FIX THE MUSIC BUGS
  
 package Scripts;
 
@@ -12,23 +11,29 @@ public class PlayMusic
 {
     private Clip clip;
 
-    private final String mainThemePath = "/Music/mainTheme.wav";
-    private final String gameThemePath = "/Music/gameTheme.wav";
-    private final String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
-    private final String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
-    private final String winThemePath = "";
-    private final String loseThemePath = "";
+    private String mainThemePath = "/Music/mainTheme.wav";
+    private String normalLevelTheme = "/Music/normalModetheme.wav";
+    private String easyLevelThemePath = "/Music/easyLevelTheme.wav";
+    private String hardLevelThemePath = "/Music/hardLevelTheme.wav";
+    private String impossibleLevelThemePath = "/Music/impossibleTheme.wav";
+    private String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
+    private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
+    private String winThemePath = "";
+    private String loseThemePath = "";
 
     public PlayMusic() 
     {
     }
 
-    public void startSong(String soundKey) 
+    public void startSong(String soundKey, int loopTimes) 
     {
         String soundPath = switch (soundKey) 
         {
             case "mainTheme" -> mainThemePath;
-            case "gameTheme" -> gameThemePath;
+            case "normalLevelTheme" -> normalLevelTheme;
+            case "easyLevelTheme" -> easyLevelThemePath;
+            case "hardLevelTheme" -> hardLevelThemePath;
+            case "impossibleLevelTheme" -> impossibleLevelThemePath;
             case "pairEffect" -> buttonPairSoundEffectPath;
             case "clickEffect" -> buttonClickSoundEffectPath;
             case "win" -> winThemePath;
@@ -42,21 +47,14 @@ public class PlayMusic
             return;
         }
 
-URL soundUrl = new URL();
-
- soundUrl = getClass().getResource(soundPath);
-
-        System.out.println(soundUrl.toString());
-
         try 
         {
-
+            URL soundUrl = getClass().getResource(soundPath);
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(soundUrl);
 
             clip = AudioSystem.getClip();
             clip.open(audioInput);
-            clip.start();
-        
+            clip.loop(loopTimes);
         }
         
         catch (Exception e)
@@ -67,14 +65,14 @@ URL soundUrl = new URL();
 
     public void stopSong() 
     {
-        if (clip != null && clip.isRunning())
+        if (clip != null)
         {
             clip.stop();
         }
 
         else
         {
-            System.out.println("NO HAY CANCIONES");
+            System.out.println("NO SONGS");
         }
     }
 }

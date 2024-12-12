@@ -2,6 +2,7 @@ package Forms;
 
 import javax.swing.JToggleButton;
 import Scripts.Scripts;
+import Scripts.PlayMusic;
 /**
  *
  * @author cristopherr
@@ -12,7 +13,8 @@ public class HardMode extends javax.swing.JFrame {
      * Creates new form HardMode
      */
 
-    public HardMode() {
+    public HardMode() 
+    {
         initComponents();
         runProgram();
     }
@@ -21,6 +23,7 @@ public class HardMode extends javax.swing.JFrame {
     private Scripts scripts = null;
     private int pairsLeft = 5;
     private int buttonsCurrentlyActive = 0;
+    private PlayMusic musicPlayer = new PlayMusic();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -307,8 +310,10 @@ public class HardMode extends javax.swing.JFrame {
     public void runProgram()
     {
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10,};
-
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
+        musicPlayer.startSong("hardLevelTheme", 0);
+
+        //TODO poner una argumetno para preguntar por nivel y poner la musica en base al nivel, desde gameBegin
 
         scripts.gameBegin(lblPairsLeft);
 

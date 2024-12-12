@@ -5,7 +5,6 @@
 package Scripts;
 
 import java.util.*;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
@@ -19,7 +18,7 @@ public class Scripts extends JFrame
     private int currentButtonsActive;
     private Timer gameTimer;
     private WinOrLose result = new WinOrLose();
-    // private PlayMusic musicPlayer = new PlayMusic();
+    private PlayMusic musicPlayer = new PlayMusic();
 
     public int[] randomPairsImage;
     public Random random = new Random();
@@ -249,11 +248,11 @@ public class Scripts extends JFrame
 
         stopGameTimer();
 
+        musicPlayer.stopSong();
     }
 
     public void win(JLabel labelToWinGame)
     {
-
         assignImageToButtons();
 
         result.setStateLbl("YOU WIN");        
@@ -265,6 +264,8 @@ public class Scripts extends JFrame
         deactivateButtons();
 
         stopGameTimer();
+
+        musicPlayer.stopSong();
     }
      
     public boolean checkIfWin()
@@ -291,6 +292,8 @@ public class Scripts extends JFrame
         }
     }
 
+    //TODO poner un argumento que pida el nivel y en base a eso poner la cancion DESDE SCRIPTS PARA EVITAR BUG QUE NO HAY CANCION ACTUALEMENTE
+
     public void gameBegin(JLabel lblPaisLeft)
     {
         lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);
@@ -298,6 +301,5 @@ public class Scripts extends JFrame
         deactivateButtons();
         randomImage(buttonsArray.length);
         assignImageToButtons();
-
     }
 }

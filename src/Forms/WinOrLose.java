@@ -146,9 +146,6 @@ public class WinOrLose extends javax.swing.JFrame {
 
     private void setMusic() 
     {
-        musicPlayer.stopSong();
-        musicPlayer.startSong("mainTheme");
-
     }
 
 

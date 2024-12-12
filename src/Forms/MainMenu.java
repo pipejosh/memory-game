@@ -1,6 +1,3 @@
-
-// TODO FIX THE MUSIC BUGS
-
 package Forms;
 
 import java.awt.Frame;
@@ -14,16 +11,14 @@ import Scripts.PlayMusic;
 
 public class MainMenu extends javax.swing.JFrame 
 {
-
-    private PlayMusic musicPlayer;
+    private PlayMusic musicPlayer = new PlayMusic();
     
     /**
      * Creates new form MainMenu
      */
     public MainMenu() 
     {
-        musicPlayer = new PlayMusic();
-        musicPlayer.startSong("mainTheme");
+        musicPlayer.startSong("mainTheme", 1000);
         initComponents();
         closeAllFramesExceptCurrent();
     }
@@ -132,8 +127,9 @@ public class MainMenu extends javax.swing.JFrame
         
         easyMode.setVisible(true);
 
-        musicPlayer.startSong("gameTheme");
+        musicPlayer.stopSong();
 
+        buttonAction();
     }
     
     private void btnNormalModeActionPerformed(java.awt.event.ActionEvent evt) 
@@ -142,7 +138,7 @@ public class MainMenu extends javax.swing.JFrame
         
         normalMode.setVisible(true);
 
-        musicPlayer.stopSong();
+        buttonAction();
     }
     
     private void btnHardModeActionPerformed(java.awt.event.ActionEvent evt) 
@@ -151,15 +147,16 @@ public class MainMenu extends javax.swing.JFrame
         
         hardMode.setVisible(true);
 
-        musicPlayer.stopSong();
+        buttonAction();
     }
+
     private void btnImpossibleModeActionPerformed(java.awt.event.ActionEvent evt) 
     {
         ImpossibleMode impossibleMode = new ImpossibleMode();
 
         impossibleMode.setVisible(true);
 
-        musicPlayer.stopSong();
+        buttonAction();
     }
     
     /**
@@ -200,9 +197,6 @@ public class MainMenu extends javax.swing.JFrame
 
     private void closeAllFramesExceptCurrent() 
     {
-
-        // musicPlayer.startSong("mainTheme");
-
         Frame[] frames = Frame.getFrames(); // Obtiene todos los marcos activos
 
         for (Frame frame : frames) 
@@ -212,6 +206,12 @@ public class MainMenu extends javax.swing.JFrame
                 frame.dispose();
             }
         }
+    }
+
+    private void buttonAction()
+    {
+        musicPlayer.stopSong();
+        this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

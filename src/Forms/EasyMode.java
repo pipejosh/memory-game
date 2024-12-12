@@ -2,8 +2,8 @@ package Forms;
 
 
 import javax.swing.JToggleButton;
-
 import Scripts.Scripts;
+import Scripts.PlayMusic;
 
 public class EasyMode extends javax.swing.JFrame
 {
@@ -11,6 +11,7 @@ public class EasyMode extends javax.swing.JFrame
     private Scripts scripts = null;
     private int pairsLeft = 2;
     private int buttonsCurrentlyActive = 0;
+    private PlayMusic musicPlayer = new PlayMusic();
 
     public EasyMode() 
     {
@@ -188,6 +189,7 @@ public class EasyMode extends javax.swing.JFrame
     {
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4};
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
+        musicPlayer.startSong("easyLevelTheme", 0);
 
         scripts.gameBegin(lblCurrentGameState);
 
