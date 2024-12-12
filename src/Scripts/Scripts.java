@@ -33,11 +33,6 @@ public class Scripts extends JFrame
         this.levelDificulty = levelDificulty;
     }
 
-    public void main(String[] args) 
-    {
-        System.out.println(Arrays.toString(randomPairsImage));
-    }
-
     public void gameTime(int memorizeTime, int gameTime, JLabel lblTimeChange, JLabel lblGameState)
     {
         startTimer(memorizeTime, lblTimeChange, new Runnable() 
