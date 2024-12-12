@@ -15,7 +15,7 @@ public class PlayMusic
     private String normalLevelTheme = "/Music/normalModetheme.wav";
     private String easyLevelThemePath = "/Music/easyLevelTheme.wav";
     private String hardLevelThemePath = "/Music/hardLevelTheme.wav";
-    private String impossibleLevelThemePath = "/Music/impossibleTheme.wav";
+    private String impossibleLevelThemePath = "/Music/impossibleLevelTheme.wav";
     private String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
     private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
     private String winThemePath = "";
@@ -30,8 +30,8 @@ public class PlayMusic
         String soundPath = switch (soundKey) 
         {
             case "mainTheme" -> mainThemePath;
-            case "normalLevelTheme" -> normalLevelTheme;
             case "easyLevelTheme" -> easyLevelThemePath;
+            case "normalLevelTheme" -> normalLevelTheme;
             case "hardLevelTheme" -> hardLevelThemePath;
             case "impossibleLevelTheme" -> impossibleLevelThemePath;
             case "pairEffect" -> buttonPairSoundEffectPath;
@@ -43,7 +43,7 @@ public class PlayMusic
 
         if (soundPath == null) 
         {
-            
+            System.out.println("ASI NO ERA CARNAL JAJA");  
             return;
         }
 
@@ -60,6 +60,8 @@ public class PlayMusic
         catch (Exception e)
         {
             e.printStackTrace();
+
+            System.out.println("WUO");
         }
     }
 

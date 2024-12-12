@@ -19,17 +19,20 @@ public class Scripts extends JFrame
     private Timer gameTimer;
     private WinOrLose result = new WinOrLose();
     private PlayMusic musicPlayer = new PlayMusic();
+    private String levelDificulty = ""; 
 
     public int[] randomPairsImage;
     public Random random = new Random();
     public static int NUMBEROFIMAGES = 12;
     
-    public Scripts(JToggleButton[] buttonsArray, int pairsLeft, int currentButtonsActive)
+    public Scripts(JToggleButton[] buttonsArray, int pairsLeft, int currentButtonsActive, String levelDificulty)
     {
         this.buttonsArray = buttonsArray;
         this.pairsLeft = pairsLeft;
         this.currentButtonsActive = currentButtonsActive;
+        this.levelDificulty = levelDificulty;
     }
+
     public void main(String[] args) 
     {
         System.out.println(Arrays.toString(randomPairsImage));
@@ -297,9 +300,22 @@ public class Scripts extends JFrame
     public void gameBegin(JLabel lblPaisLeft)
     {
         lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);
+        getLevelSong();
         
         deactivateButtons();
         randomImage(buttonsArray.length);
         assignImageToButtons();
+    }
+
+    public void getLevelSong()
+    {
+        switch (levelDificulty)
+        {
+            case "easy" -> musicPlayer.startSong("easyLevelTheme", 0);
+            case "normal" -> musicPlayer.startSong("normalLevelTheme", 0);
+            case "hard" -> musicPlayer.startSong("hardLevelTheme", 0);
+            case "impossible" -> musicPlayer.startSong("impossibleLevelTheme", 0);
+            default -> System.out.println("NO SONG WITH THAT key");
+        }
     }
 }

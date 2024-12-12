@@ -2,7 +2,6 @@ package Forms;
 
 import javax.swing.JToggleButton;
 import Scripts.Scripts;
-import Scripts.PlayMusic;
 
 /**
  *
@@ -22,7 +21,6 @@ public class NormalMode extends javax.swing.JFrame {
     private Scripts scripts = null;
     private int pairsLeft = 3;
     private int buttonsCurrentlyActive = 0;
-    private PlayMusic musicPlayer = new PlayMusic();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -228,8 +226,7 @@ public class NormalMode extends javax.swing.JFrame {
     private void runProgram()
     {
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4, btn5, btn6,};
-        scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive);
-        musicPlayer.startSong("nomalLevelTheme", 0);
+        scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive, "normal");
 
         //TODO poner una argumetno para preguntar por nivel y poner la musica en base al nivel, desde gameBegin
 
