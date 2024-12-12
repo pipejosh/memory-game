@@ -310,10 +310,6 @@ public class HardMode extends javax.swing.JFrame {
         buttonsArray = new JToggleButton[] {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10,};
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive, "hard");
 
-        //TODO poner una argumetno para preguntar por nivel y poner la musica en base al nivel, desde gameBegin
-
-         
-
         scripts.gameBegin(lblPairsLeft);
 
         // Gives 7 seconds to memorize and 12 to solve it
