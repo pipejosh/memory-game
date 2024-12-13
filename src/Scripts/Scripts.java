@@ -290,8 +290,6 @@ public class Scripts extends JFrame
         }
     }
 
-    //TODO poner un argumento que pida el nivel y en base a eso poner la cancion DESDE SCRIPTS PARA EVITAR BUG QUE NO HAY CANCION ACTUALEMENTE
-
     public void gameBegin(JLabel lblPaisLeft)
     {
         lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);

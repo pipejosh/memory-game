@@ -118,7 +118,7 @@ public class MainMenu extends javax.swing.JFrame
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
     
     private void btnEasyModeActionPerformed(java.awt.event.ActionEvent evt) 
