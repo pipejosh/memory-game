@@ -30,8 +30,7 @@ public class MainMenu extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() 
-    {
+    private void initComponents() {
 
         lblMain = new javax.swing.JLabel();
         lblDificulty = new javax.swing.JLabel();
@@ -39,6 +38,8 @@ public class MainMenu extends javax.swing.JFrame
         btnNormalMode = new javax.swing.JButton();
         btnHardMode = new javax.swing.JButton();
         btnImpossibleMode = new javax.swing.JButton();
+        btnConfiguration = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +75,20 @@ public class MainMenu extends javax.swing.JFrame
             }
         });
 
+        btnConfiguration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetConfiguration.png"))); // NOI18N
+        btnConfiguration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigurationActionPerformed(evt);
+            }
+        });
+
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetHowToPlay.png"))); // NOI18N
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,44 +96,69 @@ public class MainMenu extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(lblMain))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
+                        .addGap(88, 88, 88)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEasyMode, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(75, 75, 75)
+                                .addComponent(lblMain))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnHardMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnImpossibleMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnEasyMode, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnHardMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnImpossibleMode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblDificulty)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(lblDificulty)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addGap(22, 22, 22)
+                        .addComponent(btnConfiguration)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHelp)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(lblMain)
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
                 .addComponent(lblDificulty)
-                .addGap(47, 47, 47)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEasyMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNormalMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnImpossibleMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHardMode, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConfiguration)
+                    .addComponent(btnHelp))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConfigurationActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        Configuration configuration = new Configuration();
+
+        configuration.setVisible(true);
+
+        buttonAction();
+    }
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+
+        buttonAction();
+    }
 
     
     private void btnEasyModeActionPerformed(java.awt.event.ActionEvent evt) 
@@ -126,8 +166,6 @@ public class MainMenu extends javax.swing.JFrame
         EasyMode easyMode = new EasyMode();
         
         easyMode.setVisible(true);
-
-        musicPlayer.stopSong();
 
         buttonAction();
     }
@@ -215,8 +253,10 @@ public class MainMenu extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfiguration;
     private javax.swing.JButton btnEasyMode;
     private javax.swing.JButton btnHardMode;
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnImpossibleMode;
     private javax.swing.JButton btnNormalMode;
     private javax.swing.JLabel lblDificulty;

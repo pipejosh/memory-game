@@ -1,28 +1,32 @@
- 
- 
 package Scripts;
 
+import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.net.URL;
 
 public class PlayMusic 
 {
-    private Clip clip;
-
+    public Clip clip;
+    public FloatControl volumeControler;
+    public int currentVolume;
+    public ReadVolumeConfig volumeConfig = new ReadVolumeConfig();
+   
     private String mainThemePath = "/Music/mainTheme.wav";
     private String normalLevelTheme = "/Music/normalModetheme.wav";
     private String easyLevelThemePath = "/Music/easyLevelTheme.wav";
     private String hardLevelThemePath = "/Music/hardLevelTheme.wav";
     private String impossibleLevelThemePath = "/Music/impossibleLevelTheme.wav";
+    private String configurationThemePath = "/Music/configurationTheme.wav";
     private String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
     private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
     private String winThemePath = "";
     private String loseThemePath = "";
-
+    
     public PlayMusic() 
     {
+        this.currentVolume = volumeConfig.readConfigurationFile();
     }
 
     public void startSong(String soundKey, int loopTimes) 
@@ -34,6 +38,7 @@ public class PlayMusic
             case "normalLevelTheme" -> normalLevelTheme;
             case "hardLevelTheme" -> hardLevelThemePath;
             case "impossibleLevelTheme" -> impossibleLevelThemePath;
+            case "configurationTheme" -> configurationThemePath;
             case "pairEffect" -> buttonPairSoundEffectPath;
             case "clickEffect" -> buttonClickSoundEffectPath;
             case "win" -> winThemePath;
@@ -54,7 +59,13 @@ public class PlayMusic
 
             clip = AudioSystem.getClip();
             clip.open(audioInput);
+
+            volumeControler = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+            
             clip.loop(loopTimes);
+            changeVolume();
+            
+            
         }
         
         catch (Exception e)
@@ -76,5 +87,27 @@ public class PlayMusic
         {
             System.out.println("NO SONGS");
         }
+    }
+
+    public void changeVolume()
+    {
+        if (volumeControler == null)
+        {
+            return;
+        }
+
+
+        float minimumValue = volumeControler.getMinimum();
+        float maximunValue = volumeControler.getMaximum();
+        float newVolume = (getVolume() / 100.0f) * (maximunValue - minimumValue) + minimumValue;
+
+        volumeControler.setValue(newVolume);
+
+        volumeConfig.saveFile(this.currentVolume);
+    }
+
+    public int getVolume()
+    {
+        return this.currentVolume;
     }
 }

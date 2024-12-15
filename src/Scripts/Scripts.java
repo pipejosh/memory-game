@@ -171,8 +171,6 @@ public class Scripts extends JFrame
     {
         JToggleButton buttonPair = findPartner(currentButton);
 
-        System.out.println(currentButtonsActive);
-
         if (currentButton.isSelected() && buttonPair.isSelected())
         {
             pairsLeft --;
