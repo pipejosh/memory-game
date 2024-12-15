@@ -95,7 +95,7 @@ public class Configuration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMuteUnmuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuteUnmuteActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
     }//GEN-LAST:event_btnMuteUnmuteActionPerformed
 
     private void sldVolumeControllStateChanged(javax.swing.event.ChangeEvent evt) 
