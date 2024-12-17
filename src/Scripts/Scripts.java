@@ -108,7 +108,7 @@ public class Scripts extends JFrame
             {
                 randomElement = random.nextInt(12); 
             }
-            
+
             while (imagePairs.contains(randomElement));
 
             imagePairs.add(randomElement);
@@ -180,7 +180,6 @@ public class Scripts extends JFrame
             buttonPair.setEnabled(false);
 
         }
-
         else if (currentButtonsActive == 2 && pairsLeft > 0)
         {
             lose(lblGameState);
@@ -227,39 +226,30 @@ public class Scripts extends JFrame
 
     public void lose(JLabel labelToEndGame)
     {
-
         assignImageToButtons();
 
         result.setStateLbl("YOU LOSE");
-
         result.setVisible(true);
-
         labelToEndGame.setText("YOU LOSE");
 
         deactivateButtons();
-
         stopGameTimer();
 
         musicPlayer.stopSong();
+        musicPlayer.startSong("loseTheme", 1);
     }
 
     public void win(JLabel labelToWinGame)
     {
-        assignImageToButtons();
-
         result.setStateLbl("YOU WIN");        
-
         result.setVisible(true);
-        
         labelToWinGame.setText("YOU WON");
 
         deactivateButtons();
-
         stopGameTimer();
+        
         musicPlayer.stopSong();
-
-        musicPlayer.startSong("winTheme", 1000);
-
+        musicPlayer.startSong("winTheme", 1);
     }
      
     public boolean checkIfWin()
@@ -278,7 +268,6 @@ public class Scripts extends JFrame
         checkButtonsCurrentlyActive();
         checkAndUpdate(button, lblPairsleftDisplay, lblGameState);
         boolean hasWon = checkIfWin();
-
 
         if (hasWon)
         {

@@ -5,7 +5,6 @@ public class WinOrLose extends javax.swing.JFrame {
     public WinOrLose() 
     {
         initComponents();
-        setMusic();
     }
 
     /**
@@ -131,11 +130,6 @@ public class WinOrLose extends javax.swing.JFrame {
     {
         lblWin.setText(message);
     }
-
-    private void setMusic() 
-    {
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

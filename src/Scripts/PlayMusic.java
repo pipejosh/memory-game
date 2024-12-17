@@ -22,7 +22,7 @@ public class PlayMusic
     private String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
     private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
     private String winThemePath = "/Music/winTheme.wav";
-    private String loseThemePath = "";
+    private String loseThemePath = "/Music/loseTheme.wav";
     
     public PlayMusic() 
     {
@@ -42,7 +42,7 @@ public class PlayMusic
             case "pairEffect" -> buttonPairSoundEffectPath;
             case "clickEffect" -> buttonClickSoundEffectPath;
             case "winTheme" -> winThemePath;
-            case "lose" -> loseThemePath;
+            case "loseTheme" -> loseThemePath;
             default -> null;
         };
 
@@ -65,10 +65,10 @@ public class PlayMusic
             clip.loop(loopTimes);
             changeVolume();
         }
-        
         catch (Exception e)
         {
             e.printStackTrace();
+            System.out.println("SOMETHING WENT SO WRONG");
         }
     }
 
@@ -78,7 +78,6 @@ public class PlayMusic
         {
             clip.stop();
         }
-
         else
         {
             System.out.println("NO SONGS CURRENTLY PLAYING");

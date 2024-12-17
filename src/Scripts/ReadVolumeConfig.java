@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 public class ReadVolumeConfig 
 {
-
     private String configurationFilePath = "config.txt";
 
     public ReadVolumeConfig() 
@@ -47,14 +46,12 @@ public class ReadVolumeConfig
                     break;
                 }
             }
-
             if (volumeValue == 75) 
             {
                 saveFile(volumeValue);
             }
 
         } 
-
         catch (IOException e) 
         {
             System.out.println("NO CONFIGURATION FILE DETECTED, CREATING DEFAULT ONE");
