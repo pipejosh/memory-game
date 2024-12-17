@@ -1,19 +1,7 @@
 package Forms;
 
-import Scripts.PlayMusic;
-/**
- *
- * @author Crist
- */
 public class WinOrLose extends javax.swing.JFrame {
 
-    /**
-     * Creates new form win
-     */
-
-    private PlayMusic musicPlayer = new PlayMusic();
-
-    
     public WinOrLose() 
     {
         initComponents();

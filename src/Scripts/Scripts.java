@@ -1,7 +1,3 @@
-
-// TODO FIX THE MUSIC BUGS
-
-
 package Scripts;
 
 import java.util.*;
@@ -260,8 +256,10 @@ public class Scripts extends JFrame
         deactivateButtons();
 
         stopGameTimer();
-
         musicPlayer.stopSong();
+
+        musicPlayer.startSong("winTheme", 1000);
+
     }
      
     public boolean checkIfWin()

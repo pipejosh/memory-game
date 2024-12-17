@@ -21,7 +21,7 @@ public class PlayMusic
     private String configurationThemePath = "/Music/configurationTheme.wav";
     private String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
     private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
-    private String winThemePath = "";
+    private String winThemePath = "/Music/winTheme.wav";
     private String loseThemePath = "";
     
     public PlayMusic() 
@@ -41,7 +41,7 @@ public class PlayMusic
             case "configurationTheme" -> configurationThemePath;
             case "pairEffect" -> buttonPairSoundEffectPath;
             case "clickEffect" -> buttonClickSoundEffectPath;
-            case "win" -> winThemePath;
+            case "winTheme" -> winThemePath;
             case "lose" -> loseThemePath;
             default -> null;
         };
@@ -64,15 +64,11 @@ public class PlayMusic
             
             clip.loop(loopTimes);
             changeVolume();
-            
-            
         }
         
         catch (Exception e)
         {
             e.printStackTrace();
-
-            System.out.println("WUO");
         }
     }
 
@@ -85,7 +81,7 @@ public class PlayMusic
 
         else
         {
-            System.out.println("NO SONGS");
+            System.out.println("NO SONGS CURRENTLY PLAYING");
         }
     }
 
@@ -96,13 +92,11 @@ public class PlayMusic
             return;
         }
 
-
         float minimumValue = volumeControler.getMinimum();
         float maximunValue = volumeControler.getMaximum();
         float newVolume = (getVolume() / 100.0f) * (maximunValue - minimumValue) + minimumValue;
 
         volumeControler.setValue(newVolume);
-
         volumeConfig.saveFile(this.currentVolume);
     }
 
