@@ -1,6 +1,18 @@
 package Forms;
 
+import Scripts.PlayMusic;
+
 public class WinOrLose extends javax.swing.JFrame {
+
+    private PlayMusic musicPlayer = new PlayMusic();
+    private String winOrLose = "";
+
+    public WinOrLose(String winOrLose)
+    {
+        initComponents();
+        this.winOrLose = winOrLose;
+        winOrLose();
+    }
 
     public WinOrLose() 
     {
@@ -80,6 +92,8 @@ public class WinOrLose extends javax.swing.JFrame {
         MainMenu menu = new MainMenu();
 
         menu.setVisible(true);
+
+        musicPlayer.stopSong();
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) 
@@ -126,9 +140,31 @@ public class WinOrLose extends javax.swing.JFrame {
         });
     }
 
-    public void setStateLbl(String message)
+
+    public void win()
     {
-        lblWin.setText(message);
+        lblWin.setText("YOU WIN");
+
+        musicPlayer.startSong("winTheme", 1);
+    }
+
+    public void lose()
+    {
+        lblWin.setText("YOU WIN");
+
+        musicPlayer.startSong("loseTheme", 1);
+    }
+
+    public void winOrLose()
+    {
+        switch (winOrLose)
+        {
+            case "win" -> win();
+        
+            case "lose" -> lose();
+
+            default -> System.out.println("PLEASE ENTER A VALID INPUT");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

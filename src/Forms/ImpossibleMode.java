@@ -2,15 +2,9 @@ package Forms;
 
 import javax.swing.JToggleButton;
 import Scripts.Scripts;
-/**
- *
- * @author cristopherr
- */
+
 public class ImpossibleMode extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HardMode
-     */
     public ImpossibleMode() 
     {
         initComponents();
@@ -287,9 +281,6 @@ public class ImpossibleMode extends javax.swing.JFrame {
         scripts.buttonsAction(btn12, lblPairsLeft, lblCurrentState);
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

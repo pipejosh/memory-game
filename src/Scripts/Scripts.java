@@ -4,6 +4,8 @@ import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
+
+import Forms.MainMenu;
 import Forms.WinOrLose;
 
 public class Scripts extends JFrame 
@@ -13,10 +15,10 @@ public class Scripts extends JFrame
     private int pairsLeft;
     private int currentButtonsActive;
     private Timer gameTimer;
-    private WinOrLose result = new WinOrLose();
-    private PlayMusic musicPlayer = new PlayMusic();
+    private WinOrLose result;
     private String levelDificulty = ""; 
-
+    
+    public PlayMusic musicPlayer = new PlayMusic();
     public int[] randomPairsImage;
     public Random random = new Random();
     public static int NUMBEROFIMAGES = 12;
@@ -27,6 +29,15 @@ public class Scripts extends JFrame
         this.pairsLeft = pairsLeft;
         this.currentButtonsActive = currentButtonsActive;
         this.levelDificulty = levelDificulty;
+    }
+
+    public Scripts()
+    {
+        this.buttonsArray = null;
+        this.pairsLeft = 0;
+        this.currentButtonsActive = 0;
+        this.levelDificulty = "";
+
     }
 
     public void gameTime(int memorizeTime, int gameTime, JLabel lblTimeChange, JLabel lblGameState)
@@ -226,22 +237,21 @@ public class Scripts extends JFrame
 
     public void lose(JLabel labelToEndGame)
     {
+        result = new WinOrLose("lose");
+        result.setVisible(true);
         assignImageToButtons();
 
-        result.setStateLbl("YOU LOSE");
-        result.setVisible(true);
         labelToEndGame.setText("YOU LOSE");
 
         deactivateButtons();
         stopGameTimer();
 
         musicPlayer.stopSong();
-        musicPlayer.startSong("loseTheme", 1);
     }
 
     public void win(JLabel labelToWinGame)
     {
-        result.setStateLbl("YOU WIN");        
+        result = new WinOrLose("win");
         result.setVisible(true);
         labelToWinGame.setText("YOU WON");
 
@@ -249,7 +259,6 @@ public class Scripts extends JFrame
         stopGameTimer();
         
         musicPlayer.stopSong();
-        musicPlayer.startSong("winTheme", 1);
     }
      
     public boolean checkIfWin()
@@ -273,6 +282,15 @@ public class Scripts extends JFrame
         {
             win(lblGameState);
         }
+    }
+
+    public void playAgain()
+    {
+        MainMenu menu = new MainMenu();
+        
+        menu.setVisible(true);
+
+        musicPlayer.stopSong();
     }
 
     public void gameBegin(JLabel lblPaisLeft)
