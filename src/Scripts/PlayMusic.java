@@ -3,6 +3,7 @@ package Scripts;
 import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.FloatControl;
+import javax.swing.JToggleButton;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
@@ -23,6 +24,7 @@ public class PlayMusic
     private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
     private String winThemePath = "/Music/winTheme.wav";
     private String loseThemePath = "/Music/loseTheme.wav";
+    private float CEROVOLUME = -80.0f;
     
     public PlayMusic() 
     {
@@ -63,7 +65,7 @@ public class PlayMusic
             volumeControler = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
             
             clip.loop(loopTimes);
-            changeVolume();
+            changeAndWriteVolume();
         }
         catch (Exception e)
         {
@@ -84,7 +86,7 @@ public class PlayMusic
         }
     }
 
-    public void changeVolume()
+    public void changeAndWriteVolume()
     {
         if (volumeControler == null)
         {
@@ -97,6 +99,24 @@ public class PlayMusic
 
         volumeControler.setValue(newVolume);
         volumeConfig.saveFile(this.currentVolume);
+    }
+
+    public void changeVolume(JToggleButton button)
+    {
+        if (volumeControler == null)
+        {
+            return;
+        }
+
+        if (button.isSelected())
+        {
+            volumeControler.setValue(CEROVOLUME);
+        }
+        else 
+        {
+            changeAndWriteVolume();
+        }
+
     }
 
     public int getVolume()

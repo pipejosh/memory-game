@@ -140,7 +140,6 @@ public class WinOrLose extends javax.swing.JFrame {
         });
     }
 
-
     public void win()
     {
         lblWin.setText("YOU WIN");
@@ -150,7 +149,7 @@ public class WinOrLose extends javax.swing.JFrame {
 
     public void lose()
     {
-        lblWin.setText("YOU WIN");
+        lblWin.setText("YOU LOSE");
 
         musicPlayer.startSong("loseTheme", 1);
     }

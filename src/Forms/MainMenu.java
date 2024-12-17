@@ -4,11 +4,6 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 import Scripts.PlayMusic;
 
-/**
- *
- * @author cristopherr
- */
-
 public class MainMenu extends javax.swing.JFrame 
 {
     private PlayMusic musicPlayer = new PlayMusic();
@@ -156,6 +151,9 @@ public class MainMenu extends javax.swing.JFrame
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        Help help = new Help(); 
+
+        help.setVisible(true);
 
         buttonAction();
     }
@@ -235,7 +233,7 @@ public class MainMenu extends javax.swing.JFrame
 
     private void closeAllFramesExceptCurrent() 
     {
-        Frame[] frames = Frame.getFrames(); // Obtiene todos los marcos activos
+        Frame[] frames = Frame.getFrames(); 
 
         for (Frame frame : frames) 
         {

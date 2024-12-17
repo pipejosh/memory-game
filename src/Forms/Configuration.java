@@ -94,9 +94,10 @@ public class Configuration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMuteUnmuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuteUnmuteActionPerformed
-            // TODO add your handling code here:
-    }//GEN-LAST:event_btnMuteUnmuteActionPerformed
+    private void btnMuteUnmuteActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        musicPlayer.changeVolume(btnMuteUnmute);
+    }
 
     private void sldVolumeControllStateChanged(javax.swing.event.ChangeEvent evt) 
     {
@@ -104,8 +105,7 @@ public class Configuration extends javax.swing.JFrame {
 
         musicPlayer.currentVolume = sliderValue;
 
-        musicPlayer.changeVolume();
-
+        musicPlayer.changeAndWriteVolume();
     }
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) 
@@ -115,7 +115,6 @@ public class Configuration extends javax.swing.JFrame {
         menu.setVisible(true);
 
         buttonAction();
-
     }
 
     public static void main(String args[]) {
