@@ -19,7 +19,6 @@ public class Scripts extends JFrame
     private String levelDificulty = ""; 
     
     public PlayMusic musicPlayer = new PlayMusic();
-    public int[] randomPairsImage;
     public Random random = new Random();
     public static int NUMBEROFIMAGES = 12;
     
@@ -29,6 +28,7 @@ public class Scripts extends JFrame
         this.pairsLeft = pairsLeft;
         this.currentButtonsActive = currentButtonsActive;
         this.levelDificulty = levelDificulty;
+        getLevelSong();
     }
 
     public Scripts()
@@ -105,9 +105,10 @@ public class Scripts extends JFrame
         }
     }
 
-    public void randomImage(int buttons) 
+    public int[] randomImage() 
     {
-        randomPairsImage = new int[buttons];
+        int buttons = buttonsArray.length;
+        int[] randomPairsImage = new int[buttons];
 
         ArrayList<Integer> imagePairs = new ArrayList<Integer>();
 
@@ -132,19 +133,22 @@ public class Scripts extends JFrame
         {
             randomPairsImage[i] = imagePairs.get(i); 
         }
+
+        return randomPairsImage;
     }
 
     public void assignImageToButtons()
     {
+        int[] randomImages = randomImage();
         buttonImageIndex = new int[buttonsArray.length];
 
         for (int i = 0; i < buttonsArray.length; i++)
         {
-            String imagePath = String.format("/Images/asset%d.png", randomPairsImage[i] + 1 );
+            String imagePath = String.format("/Images/asset%d.png", randomImages[i] + 1 );
 
             buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); 
              
-            buttonImageIndex[i] = randomPairsImage[i];
+            buttonImageIndex[i] = randomImages[i];
         }
     }
 
@@ -296,10 +300,8 @@ public class Scripts extends JFrame
     public void gameBegin(JLabel lblPaisLeft)
     {
         lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);
-        getLevelSong();
         
         deactivateButtons();
-        randomImage(buttonsArray.length);
         assignImageToButtons();
     }
 
@@ -307,6 +309,7 @@ public class Scripts extends JFrame
     {
         switch (levelDificulty)
         {
+            case "turotial" -> musicPlayer.startSong("tutorialTheme", 1000);
             case "easy" -> musicPlayer.startSong("easyLevelTheme", 0);
             case "normal" -> musicPlayer.startSong("normalLevelTheme", 0);
             case "hard" -> musicPlayer.startSong("hardLevelTheme", 0);

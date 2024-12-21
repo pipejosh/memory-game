@@ -3,10 +3,6 @@ package Forms;
 import javax.swing.JToggleButton;
 import Scripts.Scripts;
 
-/**
- *
- * @author cristopherr
- */
 public class NormalMode extends javax.swing.JFrame {
 
     /**
