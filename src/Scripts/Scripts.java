@@ -17,6 +17,7 @@ public class Scripts extends JFrame
     private Timer gameTimer;
     private WinOrLose result;
     private String levelDificulty = ""; 
+    private boolean hasLost = false;
     
     public PlayMusic musicPlayer = new PlayMusic();
     public Random random = new Random();
@@ -197,6 +198,11 @@ public class Scripts extends JFrame
         }
         else if (currentButtonsActive == 2 && pairsLeft > 0)
         {
+            hasLost = true;
+        }
+
+        if (hasLost)
+        {
             lose(lblGameState);
         }
     }
@@ -225,7 +231,6 @@ public class Scripts extends JFrame
             {
                 currentButtonsActive ++;
             }
-
         }
     }
 
@@ -309,7 +314,7 @@ public class Scripts extends JFrame
     {
         switch (levelDificulty)
         {
-            case "turotial" -> musicPlayer.startSong("tutorialTheme", 1000);
+            case "tutorial" -> musicPlayer.startSong("tutorialTheme", 1000);
             case "easy" -> musicPlayer.startSong("easyLevelTheme", 0);
             case "normal" -> musicPlayer.startSong("normalLevelTheme", 0);
             case "hard" -> musicPlayer.startSong("hardLevelTheme", 0);

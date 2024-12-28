@@ -1,16 +1,20 @@
 package Forms;
 
-import Scripts.PlayMusic;
+import javax.swing.JToggleButton;
+import Forms.*;
+import Scripts.Scripts;
 
 public class Help extends javax.swing.JFrame 
 {
-
-    private PlayMusic musicPlayer = new PlayMusic();
-
+    private JToggleButton[] buttonsArray;
+    private Scripts scripts = null;
+    private int pairsLeft = 2;
+    private int buttonsCurrentlyActive = 0;
+    
     public Help() 
     {
-        musicPlayer.startSong("winTheme", 1);
         initComponents();
+        runProgram();
     }
 
     /**
@@ -24,15 +28,33 @@ public class Help extends javax.swing.JFrame
 
         lblHelp = new javax.swing.JLabel();
         btnExitHelp = new javax.swing.JButton();
+        btn1 = new javax.swing.JToggleButton();
+        btn2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblHelp.setText("jLabel1");
+        lblHelp.setText("How to Play?");
 
-        btnExitHelp.setText("jButton1");
+        btnExitHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetExit.png"))); // NOI18N
         btnExitHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitHelpActionPerformed(evt);
+            }
+        });
+
+        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn1.setPreferredSize(new java.awt.Dimension(70, 70));
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
+
+        btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn2.setPreferredSize(new java.awt.Dimension(70, 70));
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
             }
         });
 
@@ -43,33 +65,45 @@ public class Help extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addContainerGap()
+                        .addComponent(btnExitHelp))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
                         .addComponent(lblHelp))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(btnExitHelp)))
-                .addContainerGap(181, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(26, 26, 26)
                 .addComponent(lblHelp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(btnExitHelp)
-                .addGap(53, 53, 53))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn1ActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn2ActionPerformed
+
     private void btnExitHelpActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        MainMenu menu = new MainMenu();
-
-        menu.setVisible(true);
-
-        this.dispose()
     }
 
     public static void main(String args[]) {
@@ -101,14 +135,19 @@ public class Help extends javax.swing.JFrame
         });
     }
 
-    public void buttonsAction()
-    {
-        this.dispose();
 
-        musicPlayer.stopSong();
+    public void runProgram()
+    {
+        buttonsArray = new JToggleButton[] {btn1, btn2};
+        scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive, "tutorial");
+
+        // scripts.randomImage(buttonsArray.length);
+        scripts.assignImageToButtons();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btn1;
+    private javax.swing.JToggleButton btn2;
     private javax.swing.JButton btnExitHelp;
     private javax.swing.JLabel lblHelp;
     // End of variables declaration//GEN-END:variables

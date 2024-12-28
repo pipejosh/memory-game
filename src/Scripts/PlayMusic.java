@@ -14,17 +14,19 @@ public class PlayMusic
     public int currentVolume;
     public ReadVolumeConfig volumeConfig = new ReadVolumeConfig();
    
-    private String mainThemePath = "/Music/mainTheme.wav";
-    private String normalLevelTheme = "/Music/normalModetheme.wav";
-    private String easyLevelThemePath = "/Music/easyLevelTheme.wav";
-    private String hardLevelThemePath = "/Music/hardLevelTheme.wav";
-    private String impossibleLevelThemePath = "/Music/impossibleLevelTheme.wav";
-    private String configurationThemePath = "/Music/configurationTheme.wav";
-    private String buttonPairSoundEffectPath = "/Music/pairMatch.wav";
-    private String buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
-    private String winThemePath = "/Music/winTheme.wav";
-    private String loseThemePath = "/Music/loseTheme.wav";
-    private float CEROVOLUME = -80.0f;
+    private final String  mainThemePath = "/Music/mainTheme.wav";
+    private final String  normalLevelTheme = "/Music/normalModetheme.wav";
+    private final String  easyLevelThemePath = "/Music/easyLevelTheme.wav";
+    private final String  hardLevelThemePath = "/Music/hardLevelTheme.wav";
+    private final String  impossibleLevelThemePath = "/Music/impossibleLevelTheme.wav";
+    private final String  configurationThemePath = "/Music/configurationTheme.wav";
+    private final String  tutorialThemePath = "/Music/tutorialTheme.wav";
+    private final String  buttonPairSoundEffectPath = "/Music/pairMatch.wav";
+    private final String  buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
+    private final String  winThemePath = "/Music/winTheme.wav";
+    private final String  loseThemePath = "/Music/loseTheme.wav";
+
+    private final float  CEROVOLUME = -80.0f;
     
     public PlayMusic() 
     {
@@ -41,6 +43,7 @@ public class PlayMusic
             case "hardLevelTheme" -> hardLevelThemePath;
             case "impossibleLevelTheme" -> impossibleLevelThemePath;
             case "configurationTheme" -> configurationThemePath;
+            case "tutorialTheme" -> tutorialThemePath;
             case "pairEffect" -> buttonPairSoundEffectPath;
             case "clickEffect" -> buttonClickSoundEffectPath;
             case "winTheme" -> winThemePath;
@@ -116,7 +119,6 @@ public class PlayMusic
         {
             changeAndWriteVolume();
         }
-
     }
 
     public int getVolume()

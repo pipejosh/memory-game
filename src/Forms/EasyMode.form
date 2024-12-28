@@ -45,9 +45,9 @@
                                   <Component id="btn3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btn4" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btn2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btn4" max="32767" attributes="0"/>
+                                  <Component id="btn2" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lblCurrentGameState" min="-2" pref="219" max="-2" attributes="0"/>
