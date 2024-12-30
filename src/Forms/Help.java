@@ -323,15 +323,17 @@ public class Help extends javax.swing.JFrame
 
     private void btnExitHelpActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        onExit();
+        exitAction();
     }
 
     private void btnResetWonActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        resetAction();
     }
 
     private void btnResetLoseActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        resetAction();
     }
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) 
@@ -407,7 +409,6 @@ public class Help extends javax.swing.JFrame
     }
 
 
-
     public static void main(String args[]) {
 
 
@@ -443,6 +444,14 @@ public class Help extends javax.swing.JFrame
         setNonVisibleComponents(pnlSecondButtons);
         setNonVisibleComponents(pnlResetLose);
         setNonVisibleComponents(pnlResetWin);
+        
+        scriptsForOtherButtons.activateButtons();
+        btn2.setSelected(false);
+        btn3.setSelected(false);
+        btn4.setSelected(false);
+        btn5.setSelected(false);
+        btn6.setSelected(false);
+        
     }
 
 
@@ -504,7 +513,13 @@ public class Help extends javax.swing.JFrame
         }
     }
 
-    public void onExit()
+    public void resetAction()
+    {
+        setComponenetsBeginning();
+        scripts.activateButtons();
+    }
+
+    public void exitAction()
     {
         MainMenu menu = new MainMenu();
 

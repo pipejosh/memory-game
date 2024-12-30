@@ -41,7 +41,7 @@ public class Configuration extends javax.swing.JFrame {
         sldVolumeControll.setMajorTickSpacing(25);
         sldVolumeControll.setMinimum(50);
         sldVolumeControll.setToolTipText("");
-        sldVolumeControll.setValue(musicPlayer.currentVolume);
+        sldVolumeControll.setValue(musicPlayer.volumeConfig.getVolumeValue());
         sldVolumeControll.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldVolumeControllStateChanged(evt);
@@ -51,6 +51,7 @@ public class Configuration extends javax.swing.JFrame {
         lblLowHigh.setText("LOW                HIGH");
 
         btnMuteUnmute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetMuteSound.png"))); // NOI18N
+        btnMuteUnmute.setSelected(musicPlayer.volumeConfig.getIsMuted());
         btnMuteUnmute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMuteUnmuteActionPerformed(evt);
@@ -96,24 +97,22 @@ public class Configuration extends javax.swing.JFrame {
 
     private void btnMuteUnmuteActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        musicPlayer.changeVolume(btnMuteUnmute);
+        boolean isMuted = btnMuteUnmute.isSelected();
+
+        musicPlayer.volumeConfig.setIsMuted(isMuted);
+        musicPlayer.setVolumeControl();
     }
 
     private void sldVolumeControllStateChanged(javax.swing.event.ChangeEvent evt) 
     {
         int sliderValue = sldVolumeControll.getValue();
 
-        musicPlayer.currentVolume = sliderValue;
-
-        musicPlayer.changeAndWriteVolume();
+        musicPlayer.volumeConfig.setVolume(sliderValue);
+        musicPlayer.setVolumeControl();
     }
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) 
     {
-        MainMenu menu = new MainMenu();
-
-        menu.setVisible(true);
-
         buttonAction();
     }
 
@@ -151,6 +150,9 @@ public class Configuration extends javax.swing.JFrame {
 
     private void buttonAction()
     {
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
+
         this.dispose();
         musicPlayer.stopSong();
     }

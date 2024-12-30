@@ -3,7 +3,6 @@ package Scripts;
 import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.FloatControl;
-import javax.swing.JToggleButton;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
@@ -11,7 +10,7 @@ public class PlayMusic
 {
     public Clip clip;
     public FloatControl volumeControler;
-    public int currentVolume;
+    public boolean isMuted;
     public ReadVolumeConfig volumeConfig = new ReadVolumeConfig();
    
     private final String  mainThemePath = "/Music/mainTheme.wav";
@@ -30,7 +29,7 @@ public class PlayMusic
     
     public PlayMusic() 
     {
-        this.currentVolume = volumeConfig.readConfigurationFile();
+        this.isMuted = volumeConfig.getIsMuted();
     }
 
     public void startSong(String soundKey, int loopTimes) 
@@ -68,7 +67,9 @@ public class PlayMusic
             volumeControler = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
             
             clip.loop(loopTimes);
-            changeAndWriteVolume();
+            setVolumeControl();
+
+
         }
         catch (Exception e)
         {
@@ -88,41 +89,29 @@ public class PlayMusic
             System.out.println("NO SONGS CURRENTLY PLAYING");
         }
     }
-
-    public void changeAndWriteVolume()
+    
+    public void setVolumeControl()
     {
         if (volumeControler == null)
         {
             return;
         }
-
-        float minimumValue = volumeControler.getMinimum();
-        float maximunValue = volumeControler.getMaximum();
-        float newVolume = (getVolume() / 100.0f) * (maximunValue - minimumValue) + minimumValue;
-
-        volumeControler.setValue(newVolume);
-        volumeConfig.saveFile(this.currentVolume);
-    }
-
-    public void changeVolume(JToggleButton button)
-    {
-        if (volumeControler == null)
-        {
-            return;
-        }
-
-        if (button.isSelected())
+        
+        if (volumeConfig.getIsMuted())
         {
             volumeControler.setValue(CEROVOLUME);
         }
-        else 
+        
+        else
         {
-            changeAndWriteVolume();
-        }
-    }
+            float minimumValue = volumeControler.getMinimum();
+            float maximunValue = volumeControler.getMaximum();
+            float newVolume = (volumeConfig.getVolumeValue() / 100.0f) * (maximunValue - minimumValue) + minimumValue;
 
-    public int getVolume()
-    {
-        return this.currentVolume;
+            System.out.println(volumeConfig.getVolumeValue());
+        
+            volumeControler.setValue(newVolume);
+            volumeConfig.saveFile();
+        }
     }
 }
