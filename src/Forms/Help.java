@@ -1,16 +1,18 @@
 package Forms;
 
+import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import Forms.*;
 import Scripts.Scripts;
 
 public class Help extends javax.swing.JFrame 
 {
     private JToggleButton[] buttonsArray;
+    private JToggleButton[] otherButtonsArray;
+    private Scripts scriptsForOtherButtons = null;
     private Scripts scripts = null;
     private int pairsLeft = 2;
     private int buttonsCurrentlyActive = 0;
-    
+
     public Help() 
     {
         initComponents();
@@ -27,20 +29,30 @@ public class Help extends javax.swing.JFrame
     private void initComponents() {
 
         lblHelp = new javax.swing.JLabel();
-        btnExitHelp = new javax.swing.JButton();
+        pnlComponents = new javax.swing.JPanel();
+        pnlInitialButtons = new javax.swing.JPanel();
         btn1 = new javax.swing.JToggleButton();
         btn2 = new javax.swing.JToggleButton();
+        lblFirstStep = new javax.swing.JLabel();
+        pnlFirstButtons = new javax.swing.JPanel();
+        lblWrongPairs = new javax.swing.JLabel();
+        btn3 = new javax.swing.JToggleButton();
+        btn4 = new javax.swing.JToggleButton();
+        pnlSecondButtons = new javax.swing.JPanel();
+        lblCorrectPairs = new javax.swing.JLabel();
+        btn5 = new javax.swing.JToggleButton();
+        btn6 = new javax.swing.JToggleButton();
+        pnlResetWin = new javax.swing.JPanel();
+        btnResetWon = new javax.swing.JButton();
+        lblWonTutorial = new javax.swing.JLabel();
+        pnlResetLose = new javax.swing.JPanel();
+        btnResetLose = new javax.swing.JButton();
+        lblLoseTutorial = new javax.swing.JLabel();
+        btnExitHelp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHelp.setText("How to Play?");
-
-        btnExitHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetExit.png"))); // NOI18N
-        btnExitHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitHelpActionPerformed(evt);
-            }
-        });
 
         btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
         btn1.setPreferredSize(new java.awt.Dimension(70, 70));
@@ -58,6 +70,226 @@ public class Help extends javax.swing.JFrame
             }
         });
 
+        lblFirstStep.setText("Pair images");
+
+        javax.swing.GroupLayout pnlInitialButtonsLayout = new javax.swing.GroupLayout(pnlInitialButtons);
+        pnlInitialButtons.setLayout(pnlInitialButtonsLayout);
+        pnlInitialButtonsLayout.setHorizontalGroup(
+            pnlInitialButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInitialButtonsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(pnlInitialButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFirstStep, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
+        );
+        pnlInitialButtonsLayout.setVerticalGroup(
+            pnlInitialButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInitialButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFirstStep)
+                .addGap(18, 18, 18)
+                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+
+        pnlFirstButtons.setPreferredSize(new java.awt.Dimension(120, 242));
+
+        lblWrongPairs.setText("Pair wrong images");
+
+        btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset5.png"))); // NOI18N
+        btn3.setPreferredSize(new java.awt.Dimension(70, 70));
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
+
+        btn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset10.png"))); // NOI18N
+        btn4.setPreferredSize(new java.awt.Dimension(70, 70));
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlFirstButtonsLayout = new javax.swing.GroupLayout(pnlFirstButtons);
+        pnlFirstButtons.setLayout(pnlFirstButtonsLayout);
+        pnlFirstButtonsLayout.setHorizontalGroup(
+            pnlFirstButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFirstButtonsLayout.createSequentialGroup()
+                .addGroup(pnlFirstButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFirstButtonsLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(pnlFirstButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlFirstButtonsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblWrongPairs)))
+                .addGap(25, 25, 25))
+        );
+        pnlFirstButtonsLayout.setVerticalGroup(
+            pnlFirstButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFirstButtonsLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblWrongPairs)
+                .addGap(18, 18, 18)
+                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+
+        lblCorrectPairs.setText("Pair correct images");
+
+        btn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn5.setPreferredSize(new java.awt.Dimension(70, 70));
+        btn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ActionPerformed(evt);
+            }
+        });
+
+        btn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asset0.png"))); // NOI18N
+        btn6.setPreferredSize(new java.awt.Dimension(70, 70));
+        btn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlSecondButtonsLayout = new javax.swing.GroupLayout(pnlSecondButtons);
+        pnlSecondButtons.setLayout(pnlSecondButtonsLayout);
+        pnlSecondButtonsLayout.setHorizontalGroup(
+            pnlSecondButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSecondButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCorrectPairs)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlSecondButtonsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(pnlSecondButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 25, Short.MAX_VALUE))
+        );
+        pnlSecondButtonsLayout.setVerticalGroup(
+            pnlSecondButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSecondButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCorrectPairs)
+                .addGap(18, 18, 18)
+                .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+
+        btnResetWon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetReset.png"))); // NOI18N
+        btnResetWon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetWonActionPerformed(evt);
+            }
+        });
+
+        lblWonTutorial.setText("You won");
+
+        javax.swing.GroupLayout pnlResetWinLayout = new javax.swing.GroupLayout(pnlResetWin);
+        pnlResetWin.setLayout(pnlResetWinLayout);
+        pnlResetWinLayout.setHorizontalGroup(
+            pnlResetWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResetWinLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(pnlResetWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblWonTutorial, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetWon, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        pnlResetWinLayout.setVerticalGroup(
+            pnlResetWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResetWinLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblWonTutorial, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(btnResetWon)
+                .addGap(24, 24, 24))
+        );
+
+        btnResetLose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetReset.png"))); // NOI18N
+        btnResetLose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetLoseActionPerformed(evt);
+            }
+        });
+
+        lblLoseTutorial.setText("You lose");
+
+        javax.swing.GroupLayout pnlResetLoseLayout = new javax.swing.GroupLayout(pnlResetLose);
+        pnlResetLose.setLayout(pnlResetLoseLayout);
+        pnlResetLoseLayout.setHorizontalGroup(
+            pnlResetLoseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResetLoseLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(pnlResetLoseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLoseTutorial, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetLose, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
+        );
+        pnlResetLoseLayout.setVerticalGroup(
+            pnlResetLoseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResetLoseLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblLoseTutorial)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(btnResetLose)
+                .addGap(24, 24, 24))
+        );
+
+        javax.swing.GroupLayout pnlComponentsLayout = new javax.swing.GroupLayout(pnlComponents);
+        pnlComponents.setLayout(pnlComponentsLayout);
+        pnlComponentsLayout.setHorizontalGroup(
+            pnlComponentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlComponentsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(pnlInitialButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlFirstButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlSecondButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlComponentsLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(pnlResetLose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(pnlResetWin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlComponentsLayout.setVerticalGroup(
+            pnlComponentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlComponentsLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(pnlComponentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlInitialButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlSecondButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlFirstButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlComponentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlResetLose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlResetWin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        btnExitHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/assetExit.png"))); // NOI18N
+        btnExitHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitHelpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,46 +297,116 @@ public class Help extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnExitHelp))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(195, 195, 195)
                         .addComponent(lblHelp))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(195, Short.MAX_VALUE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnExitHelp)
+                            .addComponent(pnlComponents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(lblHelp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(pnlComponents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExitHelp)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn1ActionPerformed
-
-    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn2ActionPerformed
-
     private void btnExitHelpActionPerformed(java.awt.event.ActionEvent evt) 
     {
+        onExit();
     }
+
+    private void btnResetWonActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+    }
+
+    private void btnResetLoseActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+    }
+
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scriptsForOtherButtons.checkAndUpdate(btn6, new Runnable() 
+        {
+            @Override
+            public void run()     
+            {
+                actionDoOnFinish("win buttons");
+            }
+        });
+    }
+
+    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scriptsForOtherButtons.checkAndUpdate(btn5, new Runnable() 
+        {
+            @Override
+            public void run()     
+            {
+                actionDoOnFinish("win buttons");
+            }
+        });
+    }
+
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        areBothButtonsSelected(btn3, btn4, new Runnable() 
+        {
+            @Override
+            public void run()     
+            {
+                actionDoOnFinish("lose buttons");
+            }
+        });
+    }
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        areBothButtonsSelected(btn3, btn4, new Runnable() 
+        {
+            @Override
+            public void run()     
+            {
+                actionDoOnFinish("lose buttons");
+            }
+        });
+    }
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.checkAndUpdate(btn2, new Runnable() 
+        {
+            @Override
+            public void run()     
+            {
+               actionDoOnFinish("first buttons"); 
+            }
+        });
+    }
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        scripts.checkAndUpdate(btn1, new Runnable() 
+        {
+            @Override
+            public void run()     
+            {
+               actionDoOnFinish("first buttons"); 
+            }
+        });
+    }
+
+
 
     public static void main(String args[]) {
 
@@ -135,20 +437,105 @@ public class Help extends javax.swing.JFrame
         });
     }
 
+    public void setComponenetsBeginning()
+    {
+        setNonVisibleComponents(pnlFirstButtons);
+        setNonVisibleComponents(pnlSecondButtons);
+        setNonVisibleComponents(pnlResetLose);
+        setNonVisibleComponents(pnlResetWin);
+    }
+
 
     public void runProgram()
     {
         buttonsArray = new JToggleButton[] {btn1, btn2};
+        otherButtonsArray = new JToggleButton[] {btn5, btn6};
+        scriptsForOtherButtons = new Scripts(otherButtonsArray, pairsLeft, buttonsCurrentlyActive, "tutorial");
         scripts = new Scripts(buttonsArray, pairsLeft, buttonsCurrentlyActive, "tutorial");
+        
+        setComponenetsBeginning();
+        scriptsForOtherButtons.assignPairImageToButtons();
+        scripts.assignPairImageToButtons();
 
-        // scripts.randomImage(buttonsArray.length);
-        scripts.assignImageToButtons();
     }
+
+    public void areBothButtonsSelected(JToggleButton currentButton, JToggleButton pairButton, Runnable onFinish)
+    {
+        if (currentButton.isSelected() && pairButton.isSelected())
+        {
+            onFinish.run(); 
+        }
+    }
+
+    public void setVisibleComponents(JPanel panel)
+    {
+        panel.setVisible(true);
+    }
+
+    public void setNonVisibleComponents(JPanel panel)
+    {
+        panel.setVisible(false);
+    }
+
+    public void actionDoOnFinish(String option)
+    {
+        switch (option)
+        {
+            case "first buttons" ->
+            {
+                setVisibleComponents(pnlFirstButtons);
+                setVisibleComponents(pnlSecondButtons);
+            }
+
+            case "win buttons" ->
+            {
+                setVisibleComponents(pnlResetWin);
+            }
+        
+            case "lose buttons" ->
+            {
+                setVisibleComponents(pnlResetLose);
+            }
+
+            default ->
+            {
+                System.out.println("PLEASE ENTER A VALID OPTION"); 
+            }
+        }
+    }
+
+    public void onExit()
+    {
+        MainMenu menu = new MainMenu();
+
+        scriptsForOtherButtons.exit();
+        scripts.exit();
+        this.dispose();
+        menu.setVisible(true);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn1;
     private javax.swing.JToggleButton btn2;
+    private javax.swing.JToggleButton btn3;
+    private javax.swing.JToggleButton btn4;
+    private javax.swing.JToggleButton btn5;
+    private javax.swing.JToggleButton btn6;
     private javax.swing.JButton btnExitHelp;
+    private javax.swing.JButton btnResetLose;
+    private javax.swing.JButton btnResetWon;
+    private javax.swing.JLabel lblCorrectPairs;
+    private javax.swing.JLabel lblFirstStep;
     private javax.swing.JLabel lblHelp;
+    private javax.swing.JLabel lblLoseTutorial;
+    private javax.swing.JLabel lblWonTutorial;
+    private javax.swing.JLabel lblWrongPairs;
+    private javax.swing.JPanel pnlComponents;
+    private javax.swing.JPanel pnlFirstButtons;
+    private javax.swing.JPanel pnlInitialButtons;
+    private javax.swing.JPanel pnlResetLose;
+    private javax.swing.JPanel pnlResetWin;
+    private javax.swing.JPanel pnlSecondButtons;
     // End of variables declaration//GEN-END:variables
 }

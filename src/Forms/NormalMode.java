@@ -5,9 +5,6 @@ import Scripts.Scripts;
 
 public class NormalMode extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NormalMode
-     */
     public NormalMode() 
     {
         initComponents();

@@ -10,9 +10,10 @@ import Forms.WinOrLose;
 
 public class Scripts extends JFrame 
 {
-    private int[] buttonImageIndex;
+    private int[] buttonPairImageIndex;
     private JToggleButton[] buttonsArray;
     private int pairsLeft;
+    private int buttonsAmount = 0;
     private int currentButtonsActive;
     private Timer gameTimer;
     private WinOrLose result;
@@ -29,6 +30,7 @@ public class Scripts extends JFrame
         this.pairsLeft = pairsLeft;
         this.currentButtonsActive = currentButtonsActive;
         this.levelDificulty = levelDificulty;
+        this.buttonsAmount = buttonsArray.length;
         getLevelSong();
     }
 
@@ -106,14 +108,12 @@ public class Scripts extends JFrame
         }
     }
 
-    public int[] randomImage() 
+    public int[] randomPairImage() 
     {
-        int buttons = buttonsArray.length;
-        int[] randomPairsImage = new int[buttons];
 
         ArrayList<Integer> imagePairs = new ArrayList<Integer>();
 
-        for (int i = 0; i < buttons; i+= 2)
+        for (int i = 0; i < buttonsAmount; i+= 2)
         {
             int randomElement;
 
@@ -130,26 +130,60 @@ public class Scripts extends JFrame
 
         Collections.shuffle(imagePairs);
 
-        for (int i = 0; i < randomPairsImage.length; i++)
-        {
-            randomPairsImage[i] = imagePairs.get(i); 
-        }
+        int[] randomPairsImage = imagePairs.stream().mapToInt(Integer::intValue).toArray();
 
         return randomPairsImage;
     }
 
-    public void assignImageToButtons()
+    public int[] randomImpairImage()
     {
-        int[] randomImages = randomImage();
-        buttonImageIndex = new int[buttonsArray.length];
+        ArrayList<Integer> imagePairs = new ArrayList<Integer>();
 
-        for (int i = 0; i < buttonsArray.length; i++)
+        for (int i = 0; i < buttonsAmount; i ++)
+        {
+            int randomElement;
+
+            do
+            {
+                randomElement = random.nextInt(12);
+            }
+
+            while (!imagePairs.contains(randomElement));
+
+            imagePairs.add(randomElement);
+        }
+
+        int[] randomImpairImage = imagePairs.stream().mapToInt(Integer::intValue).toArray();
+
+        return randomImpairImage;
+    }
+
+    public void assignPairImageToButtons()
+    {
+        int[] randomImages = randomPairImage();
+        buttonPairImageIndex = new int[buttonsArray.length];
+
+        for (int i = 0; i < buttonsAmount; i++)
         {
             String imagePath = String.format("/Images/asset%d.png", randomImages[i] + 1 );
 
             buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); 
              
-            buttonImageIndex[i] = randomImages[i];
+            buttonPairImageIndex[i] = randomImages[i];
+        }
+    }
+
+    public void assignImpairImageToButtons()
+    {
+        int[] randomImages = randomPairImage();
+
+        for (int i = 0; i < buttonsAmount; i++)
+        {
+            String imagePath = String.format("/Images/asset%d.png", randomImages[i] + 1 );
+
+            buttonsArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); 
+             
+            buttonPairImageIndex[i] = randomImages[i];
         }
     }
 
@@ -166,11 +200,11 @@ public class Scripts extends JFrame
             }
         }
 
-        int targetImageIndex = buttonImageIndex[originalImageIndex];
+        int targetImageIndex = buttonPairImageIndex[originalImageIndex];
 
         for (int i = 0; i < buttonsArray.length; i++)
         {
-            if (i != originalImageIndex && buttonImageIndex[i] == targetImageIndex)
+            if (i != originalImageIndex && buttonPairImageIndex[i] == targetImageIndex)
             {
                 return buttonsArray[i]; 
             }
@@ -179,11 +213,18 @@ public class Scripts extends JFrame
         return null;
     }
 
+    public boolean isButtonPairSelected(JToggleButton currentButton)
+    {
+        JToggleButton buttonPair = findPartner(currentButton);
+
+        return currentButton.isSelected() && buttonPair.isSelected();
+    }
+
     public void checkAndUpdate(JToggleButton currentButton, JLabel pairsLabel, JLabel lblGameState)
     {
         JToggleButton buttonPair = findPartner(currentButton);
 
-        if (currentButton.isSelected() && buttonPair.isSelected())
+        if (isButtonPairSelected(currentButton))
         {
             pairsLeft --;
 
@@ -205,6 +246,24 @@ public class Scripts extends JFrame
         {
             lose(lblGameState);
         }
+    }
+
+    public void checkAndUpdate(JToggleButton currentButton, Runnable onFinishAction)
+    {
+        JToggleButton buttonsPair = findPartner(currentButton);
+
+        if (isButtonPairSelected(currentButton))
+        {
+            buttonsPair.setSelected(false);
+            currentButton.setSelected(false);
+
+            buttonsPair.setEnabled(false);
+            currentButton.setEnabled(false);
+
+            onFinishAction.run();
+        }
+
+
     }
 
     public void deactivateButtons()
@@ -248,7 +307,7 @@ public class Scripts extends JFrame
     {
         result = new WinOrLose("lose");
         result.setVisible(true);
-        assignImageToButtons();
+        assignPairImageToButtons();
 
         labelToEndGame.setText("YOU LOSE");
 
@@ -307,7 +366,7 @@ public class Scripts extends JFrame
         lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);
         
         deactivateButtons();
-        assignImageToButtons();
+        assignPairImageToButtons();
     }
 
     public void getLevelSong()
@@ -321,5 +380,10 @@ public class Scripts extends JFrame
             case "impossible" -> musicPlayer.startSong("impossibleLevelTheme", 0);
             default -> System.out.println("NO SONG WITH THAT key");
         }
+    }
+
+    public void exit()
+    {
+        musicPlayer.stopSong();
     }
 }
