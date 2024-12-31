@@ -108,8 +108,6 @@ public class PlayMusic
             float maximunValue = volumeControler.getMaximum();
             float newVolume = (volumeConfig.getVolumeValue() / 100.0f) * (maximunValue - minimumValue) + minimumValue;
 
-            System.out.println(volumeConfig.getVolumeValue());
-        
             volumeControler.setValue(newVolume);
             volumeConfig.saveFile();
         }

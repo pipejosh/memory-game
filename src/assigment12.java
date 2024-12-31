@@ -1,3 +1,4 @@
+import SplashScreen.SplashScreen;
 import Forms.MainMenu;
 
 public class assigment12 
@@ -6,6 +7,7 @@ public class assigment12
 
     public static void main(String[] args) 
     {
+        new SplashScreen();
         test.setVisible(true);
     }
 }

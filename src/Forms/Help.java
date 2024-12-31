@@ -446,6 +446,8 @@ public class Help extends javax.swing.JFrame
         setNonVisibleComponents(pnlResetWin);
         
         scriptsForOtherButtons.activateButtons();
+        activateLoseButtons();
+        btn1.setSelected(false);
         btn2.setSelected(false);
         btn3.setSelected(false);
         btn4.setSelected(false);
@@ -498,11 +500,14 @@ public class Help extends javax.swing.JFrame
 
             case "win buttons" ->
             {
+                deactivateLoseButtons();
                 setVisibleComponents(pnlResetWin);
             }
         
             case "lose buttons" ->
             {
+                deactivateLoseButtons();
+                scriptsForOtherButtons.deactivateButtons();
                 setVisibleComponents(pnlResetLose);
             }
 
@@ -511,6 +516,18 @@ public class Help extends javax.swing.JFrame
                 System.out.println("PLEASE ENTER A VALID OPTION"); 
             }
         }
+    }
+
+    public void activateLoseButtons()
+    {
+        btn3.setEnabled(true);
+        btn4.setEnabled(true);
+    }
+
+    public void deactivateLoseButtons()
+    {
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
     }
 
     public void resetAction()

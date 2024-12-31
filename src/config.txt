@@ -1,2 +1,2 @@
-volume = 83
+volume = 75
 mute = false
