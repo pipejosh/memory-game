@@ -406,6 +406,8 @@ public class Scripts extends JFrame
     // This is the big method is the actions of the buttons
     public void buttonsAction(JToggleButton button, JLabel lblPairsleftDisplay, JLabel lblGameState)
     {
+        // IDK why but this line makes prevents the game from breaking, this line makes the game to be able to lose (dont touch it)
+        currentButtonsActive = 0;
         // Checks how many buttons are currently active + runs the check and update method
         checkButtonsCurrentlyActive();
         checkAndUpdate(button, lblPairsleftDisplay, lblGameState);
