@@ -16,6 +16,7 @@ import Forms.WinOrLose;
 public class Scripts extends JFrame 
 {
     // Initialize all the variables we will need
+    private int[] randomImages;
     private int[] buttonPairImageIndex;
     private JToggleButton[] buttonsArray;
     private int pairsLeft;
@@ -137,7 +138,7 @@ public class Scripts extends JFrame
     }
 
     // This method creates random images but in pairs (eg [1,2,1,3,2,3]) random numbers but in pairs
-    public int[] randomPairImage() 
+    public void randomPairImage() 
     {
         // Create and arraylist of integers (I use an arraylist because is more flexible)
         ArrayList<Integer> imagePairs = new ArrayList<Integer>();
@@ -167,17 +168,13 @@ public class Scripts extends JFrame
         Collections.shuffle(imagePairs);
 
         // Convert the arraylist to a regular array of integers in order to be more easy to handle after
-        int[] randomPairsImage = imagePairs.stream().mapToInt(Integer::intValue).toArray();
+        randomImages = imagePairs.stream().mapToInt(Integer::intValue).toArray();
 
-        // Return the new random pairs
-        return randomPairsImage;
     }
 
     // This method assign the random images to the buttons
     public void assignPairImageToButtons()
     {
-        // Create and array of the random pairs from the method above
-        int[] randomImages = randomPairImage();
         // Create a new array to track the partners buttons 
         buttonPairImageIndex = new int[buttonsAmount];
 
@@ -429,7 +426,8 @@ public class Scripts extends JFrame
         // Set the label to the pairs left
         lblPaisLeft.setText("PAIRS LEFT " + pairsLeft);
         
-        // Deactivate the buttons + assign the images to the buttons
+        // Deactivate the buttons + generate the random images + assign the images to the buttons
+        randomPairImage();
         deactivateButtons();
         assignPairImageToButtons();
     }
